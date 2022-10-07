@@ -13,6 +13,8 @@ public interface UserDao {
 
     User getById(Integer id);
 
+    User getByName(String name);
+
     User getByUser(@Param("username") String username, @Param("password") String password);
 
     int insert(User user);

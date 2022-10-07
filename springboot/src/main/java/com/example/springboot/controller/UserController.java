@@ -29,6 +29,11 @@ public class UserController {
         return userDao.getById(id);
     }
 
+    @GetMapping("/username/{username}")
+    public User getByName(@PathVariable String username){
+        return userDao.getByName(username);
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(@RequestBody User user) {
         if (user.getUsername() == null || user.getPassword() == null) {
@@ -46,11 +51,26 @@ public class UserController {
         if (user.getUsername() == null || user.getPassword() == null) {
             return Result.error("Missing variable");
         }
-        userDao.insert(user);
-        User result = userDao.getByUser(user.getUsername(), user.getPassword());
-        if (result == null) {
-            return Result.error("Wrong username or password");
+        User result = userDao.getByName(user.getUsername());
+        if (result != null) {
+            return Result.error("Username exists! Try another.");
         }
+        userDao.insert(user);
+        result = userDao.getByName(user.getUsername());
+        if (result == null) {
+            return Result.error("Create failed");
+        }
+        return Result.success(result);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public Result update(@RequestBody User user) {
+        if (user.getUsername() == null || user.getPassword() == null) {
+            return Result.error("Missing variable");
+        }
+        User result = userDao.getByName(user.getUsername());
+        userDao.update(user);
+        result = userDao.getByName(user.getUsername());
         return Result.success(result);
     }
 

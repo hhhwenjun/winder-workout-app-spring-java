@@ -4,14 +4,14 @@ import lombok.Data;
 
 @Data
 public class Result {
-    private String code; // 一个标识
+    private String code;
     private String msg;
     private Object data;
 
     private static final String SUCCESS_CODE = "200";
     private static final String ERROR_CODE = "-1";
-    private static final String SUCCESS_MSG = "请求成功";
-    private static final String ERROR_MSG = "请求失败";
+    private static final String SUCCESS_MSG = "Request Successful";
+    private static final String ERROR_MSG = "Request Fail";
 
     public static Result success() {
         Result result = new Result();
