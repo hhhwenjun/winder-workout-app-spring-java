@@ -3,18 +3,25 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    name: 'Main',
-    component: () => import('../views/Login.vue')
+    name: 'Manage',
+    component: () => import('../views/Manage.vue'),
+    children:[
+      {
+        path: '',
+        name: 'Home',
+        component: () => import('../views/Home.vue')
+      },
+      {
+        path: '/profileedit',
+        name: 'ProfileEdit',
+        component: () => import('../views/ProfileEdit.vue')
+      }
+    ]
   },
   {
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue')
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: () => import('../views/Home.vue')
   },
   {
     path: '/register',

@@ -52,6 +52,7 @@ const rules = reactive({
 
 const user = reactive({})
 
+
 const register = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
@@ -62,7 +63,7 @@ const register = () => {
             message: 'Login Success'
           })
           localStorage.setItem('username', user.username)
-          router.push('/home')
+          router.push('/')
         } else {
           ElNotification({
             type: 'error',

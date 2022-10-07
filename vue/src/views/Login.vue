@@ -50,7 +50,7 @@ const login = () => {
             message: 'Login Success'
           })
           localStorage.setItem('username', user.username)
-          router.push('/home')
+          router.push('/')
         } else {
           ElNotification({
             type: 'error',
@@ -72,7 +72,7 @@ const register = () =>{
 }
 
 if(localStorage.getItem("username")!=null){
-  router.push('/home')
+  router.push('/')
 }
 </script>
 
