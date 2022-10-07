@@ -1,0 +1,95 @@
+<template>
+  <div>
+    <div style="width: 400px; margin: 200px auto;">
+      <h1 style="text-align: center; margin-bottom: 30px">Account</h1>
+      <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
+        <el-form-item prop="username">
+          <el-input v-model="state.user.username" :prefix-icon="User" />
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input v-model="state.user.password" :prefix-icon="Lock" show-password  />
+        </el-form-item>
+        <h2>Information</h2>
+        <el-form-item prop="sex">
+          <el-input v-model="state.user.sex" label="Sex"/>
+        </el-form-item>
+        <el-form-item prop="age">
+          <el-input v-model="state.user.age" label="Age"  />
+        </el-form-item>
+        <el-form-item prop="phone">
+          <el-input v-model="state.user.phone" label="Phone" />
+        </el-form-item>
+        <el-form-item prop="email">
+          <el-input v-model="state.user.email" label="Email"  />
+        </el-form-item>
+        <el-form-item prop="address">
+          <el-input v-model="state.user.address" label="address" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" style="width: 100%" @click="profileedit">Finish</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import {ref, reactive, getCurrentInstance} from 'vue'
+import {User, Lock} from '@element-plus/icons-vue'
+import {ElNotification } from "element-plus";
+import request from "../request";
+import router from "../router";
+
+const { proxy } = getCurrentInstance()
+
+let state = reactive({
+  user:{}
+})
+
+request.get('/user/username/'+localStorage.getItem("username")).then(res => {
+  state.user = reactive(res)
+  console.log(state.user);
+})
+
+const rules = reactive({
+  username: [
+    { required: true, message: 'Please enter username', trigger: 'blur' }
+  ],
+  password: [
+    { required: true, message: 'Please enter password', trigger: 'blur' }
+  ],
+})
+
+const profileedit = () => {
+  proxy.$refs.ruleFormRef.validate((valid) => {
+    if(valid) {
+      console.log(state.user);
+      request.post('/user/update', state.user).then(res => {
+        if (res.code === '200') {
+          ElNotification({
+            type: 'success',
+            message: 'Edit Success'
+          })
+          localStorage.setItem('username', state.user.username)
+          location. reload()
+        } else {
+          ElNotification({
+            type: 'error',
+            message: res.msg
+          })
+        }
+      })
+    } else {
+      ElNotification({
+        type: 'error',
+        message: 'Errors'
+      })
+    }
+  })
+}
+
+</script>
+
+<style scoped>
+
+</style>
