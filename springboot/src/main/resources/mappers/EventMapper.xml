@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.springboot.dao.EventDao">
+    <insert id="insert">
+        INSERT INTO `event`(name, createrid, time, location, description, participantid) values(#{name},  #{createrid},  #{time},  #{age},  #{location},  #{description},  #{participantid});
+    </insert>
+
+    <update id="update">
+        update `event`
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                time = #{time},
+            </if>
+            <if test="sex != null and sex != ''">
+                location = #{location},
+            </if>
+                description = #{description},
+            <if test="participantid != null and participantid != ''">
+                participantid = #{participantid},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from `event` where id = #{id};
+    </delete>
+
+    <select id="getBycreater" resultType="com.example.springboot.entity.Event">
+        SELECT * FROM event where createrid = #{createrid}
+    </select>
+
+    <select id="getByparticipant" resultType="com.example.springboot.entity.Event">
+        SELECT * FROM event WHERE FIND_IN_SET(#{userid}, participantid)
+    </select>
+
+    <select id="getByid" resultType="com.example.springboot.entity.Event">
+        SELECT * FROM event WHERE id = #{id}
+    </select>
+</mapper>

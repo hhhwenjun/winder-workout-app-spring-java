@@ -68,10 +68,18 @@ public class UserController {
         if (user.getUsername() == null || user.getPassword() == null) {
             return Result.error("Missing variable");
         }
-        User result = userDao.getByName(user.getUsername());
         userDao.update(user);
-        result = userDao.getByName(user.getUsername());
+        User result = userDao.getByName(user.getUsername());
         return Result.success(result);
     }
+
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id) {
+        if (id == null || id == 0) {
+            return Result.error("参数错误");
+        }
+        return Result.success(userDao.deleteById(id) == 1);
+    }
+
 
 }
