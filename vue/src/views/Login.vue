@@ -49,8 +49,12 @@ const login = () => {
             type: 'success',
             message: 'Login Success'
           })
-          localStorage.setItem('username', user.username)
-          router.push('/')
+          request.get("/user/username/"+user.username).then(res => {
+            localStorage.setItem('userid', res.id)
+            localStorage.setItem('username', res.username)
+            router.push('/')
+            location.reload()
+          })
         } else {
           ElNotification({
             type: 'error',

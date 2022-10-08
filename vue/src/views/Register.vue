@@ -11,19 +11,19 @@
         </el-form-item>
         <h2>Information</h2>
         <el-form-item prop="sex">
-          <el-input v-model="user.sex" label="Sex" />
+          <el-input v-model="user.sex" placeholder="Sex" />
         </el-form-item>
         <el-form-item prop="age">
-          <el-input v-model="user.age" label="Age"  />
+          <el-input v-model="user.age" placeholder="Age"  />
         </el-form-item>
         <el-form-item prop="phone">
-          <el-input v-model="user.phone" label="Phone" />
+          <el-input v-model="user.phone" placeholder="Phone" />
         </el-form-item>
         <el-form-item prop="email">
-          <el-input v-model="user.email" label="Email"  />
+          <el-input v-model="user.email" placeholder="Email"  />
         </el-form-item>
         <el-form-item prop="address">
-          <el-input v-model="user.address" label="address" />
+          <el-input v-model="user.address" placeholder="address" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%" @click="register">Register</el-button>
@@ -56,14 +56,18 @@ const user = reactive({})
 const register = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
+      console.log(user);
       request.post('/user/register', user).then(res => {
         if (res.code === '200') {
           ElNotification({
             type: 'success',
             message: 'Login Success'
           })
-          localStorage.setItem('username', user.username)
-          router.push('/')
+          request.get("/user/username/"+user.username).then(res => {
+            localStorage.setItem('userid', res.id)
+            localStorage.setItem('username', res.username)
+            router.push('/')
+          })
         } else {
           ElNotification({
             type: 'error',

@@ -11,19 +11,19 @@
         </el-form-item>
         <h2>Information</h2>
         <el-form-item prop="sex">
-          <el-input v-model="state.user.sex" label="Sex"/>
+          <el-input v-model="state.user.sex" placeholder="Sex"/>
         </el-form-item>
         <el-form-item prop="age">
-          <el-input v-model="state.user.age" label="Age"  />
+          <el-input v-model="state.user.age" placeholder="Age"  />
         </el-form-item>
         <el-form-item prop="phone">
-          <el-input v-model="state.user.phone" label="Phone" />
+          <el-input v-model="state.user.phone" placeholder="Phone" />
         </el-form-item>
         <el-form-item prop="email">
-          <el-input v-model="state.user.email" label="Email"  />
+          <el-input v-model="state.user.email" placeholder="Email"  />
         </el-form-item>
         <el-form-item prop="address">
-          <el-input v-model="state.user.address" label="address" />
+          <el-input v-model="state.user.address" placeholder="address" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%" @click="profileedit">Finish</el-button>
@@ -46,7 +46,7 @@ let state = reactive({
   user:{}
 })
 
-request.get('/user/username/'+localStorage.getItem("username")).then(res => {
+request.get('/user/userid/'+localStorage.getItem("userid")).then(res => {
   state.user = reactive(res)
   console.log(state.user);
 })

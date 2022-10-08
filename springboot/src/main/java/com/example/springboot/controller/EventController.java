@@ -3,7 +3,6 @@ package com.example.springboot.controller;
 import com.example.springboot.common.Result;
 import com.example.springboot.dao.EventDao;
 import com.example.springboot.entity.Event;
-import com.example.springboot.entity.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +38,6 @@ public class EventController {
         }
         eventDao.insert(event);
         Event result = eventDao.getByid(event.getId());
-        if (result == null) {
-            return Result.error("Create failed");
-        }
         return Result.success(result);
     }
 

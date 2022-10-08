@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.springboot.dao.EventDao">
     <insert id="insert">
-        INSERT INTO `event`(name, createrid, time, location, description, participantid) values(#{name},  #{createrid},  #{time},  #{age},  #{location},  #{description},  #{participantid});
+        INSERT INTO `event`(name, createrid, time, location, description, participantid) values(#{name},  #{createrid},  #{time},   #{location},  #{description},  #{participantid});
     </insert>
 
     <update id="update">
@@ -14,12 +14,8 @@
             <if test="name != null and name != ''">
                 name = #{name},
             </if>
-            <if test="password != null and password != ''">
                 time = #{time},
-            </if>
-            <if test="sex != null and sex != ''">
                 location = #{location},
-            </if>
                 description = #{description},
             <if test="participantid != null and participantid != ''">
                 participantid = #{participantid},
