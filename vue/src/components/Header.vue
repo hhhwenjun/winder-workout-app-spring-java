@@ -20,7 +20,7 @@
 <script setup>
 
 import {ref} from "vue";
-import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
+import { Setting } from '@element-plus/icons-vue'
 import router from "../router/index.js";
 
 const user_login = ref(localStorage.getItem("username"))
@@ -37,5 +37,11 @@ const to_profile = () => {
 </script>
 
 <style scoped>
-
+.toolbar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  right: 20px;
+}
 </style>

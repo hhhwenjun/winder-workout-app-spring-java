@@ -1,5 +1,5 @@
 <template>
-  <el-container class="layout-container-demo" style="height: 1000px">
+  <el-container class="layout-container" style="height: 1000px">
     <el-aside width="200px">
       <SideNavigator></SideNavigator>
     </el-aside>
@@ -20,8 +20,7 @@
 
 
 <script setup>
-import {reactive, ref} from "vue";
-import request from "../request.js";
+import {reactive} from "vue";
 import router from "../router/index.js";
 import SideNavigator from "../components/SideNavigator.vue";
 import Header from "../components/Header.vue";
@@ -34,3 +33,20 @@ if(localStorage.getItem("username")==null){
   router.push('/login')
 }
 </script>
+
+<style scoped>
+.layout-container .el-header {
+  position: relative;
+  background-color: var(--el-color-primary-light-7);
+  color: var(--el-text-color-primary);
+}
+.layout-container .el-aside {
+  color: var(--el-text-color-primary);
+  background: var(--el-color-primary-light-8);
+}
+.layout-container .el-main {
+  padding: 0;
+}
+
+
+</style>
