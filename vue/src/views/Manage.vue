@@ -1,7 +1,7 @@
 <template>
-  <el-container class="layout-container-demo" style="height: 500px">
+  <el-container class="layout-container-demo" style="height: 1000px">
     <el-aside width="200px">
-      <SideNvigation></SideNvigation>
+      <SideNavigator></SideNavigator>
     </el-aside>
 
     <el-container>
@@ -23,7 +23,7 @@
 import {reactive, ref} from "vue";
 import request from "../request.js";
 import router from "../router/index.js";
-import SideNvigation from "../components/SideNvigation.vue";
+import SideNavigator from "../components/SideNavigator.vue";
 import Header from "../components/Header.vue";
 
 const state = reactive({

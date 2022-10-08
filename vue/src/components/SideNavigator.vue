@@ -1,0 +1,54 @@
+<template>
+  <el-scrollbar>
+    <el-menu :default-openeds="['2', '3']" router>
+      <el-menu-item index="/" >
+        <template #title>
+          <el-icon><house /></el-icon>Home
+        </template>
+      </el-menu-item>
+      <el-sub-menu index="2">
+        <template #title>
+          <el-icon><message /></el-icon>Mate
+        </template>
+          <el-menu-item index="/matchmate">Match mate</el-menu-item>
+          <el-menu-item index="/yourmate">Your mate</el-menu-item>
+        <el-sub-menu index="2-1">
+          <template #title>Message</template>
+          <el-menu-item index="/messagesent">Message sent</el-menu-item>
+          <el-menu-item index="/messagereceived">Message received</el-menu-item>
+        </el-sub-menu>
+      </el-sub-menu>
+      <el-sub-menu index="3">
+        <template #title>
+          <el-icon><icon-menu /></el-icon>Event
+        </template>
+          <el-menu-item index="/findevent">Find Event</el-menu-item>
+          <el-menu-item index="/createevent">Create Event</el-menu-item>
+        <el-sub-menu index="3-1">
+          <template #title>Your event</template>
+          <el-menu-item index="/youreventcreated">You created</el-menu-item>
+          <el-menu-item index="/youreventjoint">You joint</el-menu-item>
+        </el-sub-menu>
+      </el-sub-menu>
+      <el-sub-menu index="4">
+        <template #title>
+          <el-icon><setting /></el-icon>Account
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/profileedit">Set password</el-menu-item>
+          <el-menu-item index="/profileedit">Profile</el-menu-item>
+        </el-menu-item-group>
+      </el-sub-menu>
+    </el-menu>
+  </el-scrollbar>
+</template>
+
+<script setup>
+
+import { Menu as IconMenu, Message, Setting, House } from '@element-plus/icons-vue'
+
+</script>
+
+<style scoped>
+
+</style>

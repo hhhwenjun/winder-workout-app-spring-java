@@ -15,7 +15,47 @@ const routes = [
         path: '/profileedit',
         name: 'ProfileEdit',
         component: () => import('../views/ProfileEdit.vue')
-      }
+      },
+      {
+        path: '/matchmate',
+        name: 'MatchMate',
+        component: () => import('../views/MatchMate.vue')
+      },
+      {
+        path: '/yourmate',
+        name: 'YourMate',
+        component: () => import('../views/YourMate.vue')
+      },
+      {
+        path: '/messagesent',
+        name: 'MessageSent',
+        component: () => import('../views/MessageSent.vue')
+      },
+      {
+        path: '/messagereceived',
+        name: 'MessageReceived',
+        component: () => import('../views/MessageReceived.vue')
+      },
+      {
+        path: '/findevent',
+        name: 'Findevent',
+        component: () => import('../views/FineEvent.vue')
+      },
+      {
+        path: '/createevent',
+        name: 'Createevent',
+        component: () => import('../views/CreateEvent.vue')
+      },
+      {
+        path: '/youreventcreated',
+        name: 'YourEventCreated',
+        component: () => import('../views/YourEventCreated.vue')
+      },
+      {
+        path: '/youreventjoint',
+        name: 'YourEventJoint',
+        component: () => import('../views/YourEventJoint.vue')
+      },
     ]
   },
   {
