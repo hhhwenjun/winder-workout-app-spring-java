@@ -39,7 +39,7 @@ const routes = [
       {
         path: '/findevent',
         name: 'Findevent',
-        component: () => import('../views/FineEvent.vue')
+        component: () => import('../views/FindEvent.vue')
       },
       {
         path: '/createevent',

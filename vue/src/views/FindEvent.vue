@@ -1,5 +1,5 @@
 <template>
-  FineEvent
+  FindEvent
 </template>
 
 <script>

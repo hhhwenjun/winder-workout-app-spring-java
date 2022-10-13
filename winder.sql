@@ -11,11 +11,9 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 10/10/2022 12:26:06
+ Date: 10/13/2022 12:26:06
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Table structure for event
@@ -51,6 +49,7 @@ CREATE TABLE `user`  (
   `phone` int NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `sportid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username` ASC) USING BTREE COMMENT 'username not same'
 ) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
@@ -58,9 +57,11 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house');
-INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat');
-INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless');
+INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house', NULL);
+INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL);
+INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless', NULL);
+INSERT INTO `user` VALUES (4,'amber','123456','female',19,444444,'4@4.com','30 stan st','1,2,3');
+INSERT INTO `user` VALUES (5,'lisa','123456','female',32,555555,'5@5.com','21 clemson st','5');
 
 -- ----------------------------
 -- Table structure for userrelation
@@ -80,5 +81,29 @@ CREATE TABLE `userrelation`  (
 INSERT INTO `userrelation` VALUES (1, 1, '2,3');
 INSERT INTO `userrelation` VALUES (2, 2, '1,3');
 INSERT INTO `userrelation` VALUES (3, 3, '1,2');
+
+-- ----------------------------
+-- Table structure for table `sport`
+-- ----------------------------
+
+DROP TABLE IF EXISTS `sport`;
+CREATE TABLE `sport` (
+ `id` int NOT NULL AUTO_INCREMENT,
+ `sportname` varchar(255) NOT NULL,
+ `description` varchar(255) DEFAULT NULL,
+ `userid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+ PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of Sports
+-- ----------------------------
+
+INSERT INTO `sport` VALUES (1,'Basketball','Play basketball','4'),
+                           (2,'Swimming','Swimming in pool/ocean','4'),
+                           (3,'Jogging','Jogging every day/night','4'),
+                           (4,'Football','Team sport with many people',NULL),
+                           (5,'Biking','Biking','5'),
+                           (6,'Gym','Workout in a gym',NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
