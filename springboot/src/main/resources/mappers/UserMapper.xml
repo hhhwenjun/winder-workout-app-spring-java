@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.springboot.dao.UserDao">
     <insert id="insert">
-        INSERT INTO `user`(username, password, sex, age, phone, email, address) values(#{username},  #{password},  #{sex},  #{age},  #{phone},  #{email},  #{address});
+        INSERT INTO `user`(username, password, sex, age, phone, email, address) values(#{username},  #{password},  #{sex},  #{age},  #{phone},  #{email},  #{address},  #{bio});
     </insert>
 
     <update id="update">
@@ -31,6 +31,9 @@
             </if>
             <if test="address != null and address != ''">
                 address = #{address},
+            </if>
+            <if test="bio != null and bio != ''">
+                bio = #{bio},
             </if>
         </set>
         where id = #{id}

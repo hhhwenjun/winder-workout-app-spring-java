@@ -58,7 +58,9 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house', NULL, NULL);
+INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com',
+                           'house', NULL,
+                           'I am a college student who want to make more friends with peers. I love sport and want to practice more about my skills.');
 INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL, NULL);
 INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless', NULL, NULL);
 INSERT INTO `user` VALUES (4,'amber','123456','female',19,444444,'4@4.com','30 stan st','1,2,3', NULL);

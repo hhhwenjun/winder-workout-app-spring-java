@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="width: 400px; margin: 20px auto;">
-      <h1 style="text-align: center; margin-bottom: 30px">Account</h1>
+      <h2 style="text-align: center; margin-bottom: 30px">Account</h2>
       <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
         <el-form-item prop="username">
           <el-input v-model="state.user.username" :prefix-icon="User" />
@@ -9,8 +9,8 @@
         <el-form-item prop="password">
           <el-input v-model="state.user.password" :prefix-icon="Lock" show-password  />
         </el-form-item>
-        <h2>Information</h2>
-        <el-form-item prop="sex">
+        <h2 style="text-align: center; margin-bottom: 30px">Information</h2>
+        <el-form-item prop="gender">
           <el-input v-model="state.user.sex" placeholder="Sex"/>
         </el-form-item>
         <el-form-item prop="age">
@@ -24,6 +24,9 @@
         </el-form-item>
         <el-form-item prop="address">
           <el-input v-model="state.user.address" placeholder="address" />
+        </el-form-item>
+        <el-form-item prop="bio">
+          <el-input v-model="state.user.bio" placeholder="bio" type="textarea"/>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%" @click="profileedit">Finish</el-button>
