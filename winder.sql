@@ -50,6 +50,7 @@ CREATE TABLE `user`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `sportid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `bio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username` ASC) USING BTREE COMMENT 'username not same'
 ) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
@@ -57,11 +58,11 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house', NULL);
-INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL);
-INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless', NULL);
-INSERT INTO `user` VALUES (4,'amber','123456','female',19,444444,'4@4.com','30 stan st','1,2,3');
-INSERT INTO `user` VALUES (5,'lisa','123456','female',32,555555,'5@5.com','21 clemson st','5');
+INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house', NULL, NULL);
+INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL, NULL);
+INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless', NULL, NULL);
+INSERT INTO `user` VALUES (4,'amber','123456','female',19,444444,'4@4.com','30 stan st','1,2,3', NULL);
+INSERT INTO `user` VALUES (5,'lisa','123456','female',32,555555,'5@5.com','21 clemson st','5', 'A sport lover.');
 
 -- ----------------------------
 -- Table structure for userrelation
