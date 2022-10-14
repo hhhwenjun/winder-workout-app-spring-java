@@ -91,7 +91,6 @@ CREATE TABLE `sport` (
  `id` int NOT NULL AUTO_INCREMENT,
  `sportname` varchar(255) NOT NULL,
  `description` varchar(255) DEFAULT NULL,
- `userid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
@@ -99,11 +98,34 @@ CREATE TABLE `sport` (
 -- Records of Sports
 -- ----------------------------
 
-INSERT INTO `sport` VALUES (1,'Basketball','Play basketball','4'),
-                           (2,'Swimming','Swimming in pool/ocean','4'),
-                           (3,'Jogging','Jogging every day/night','4'),
-                           (4,'Football','Team sport with many people',NULL),
-                           (5,'Biking','Biking','5'),
-                           (6,'Gym','Workout in a gym',NULL);
+INSERT INTO `sport` VALUES (1,'Basketball','Play basketball'),
+                           (2,'Swimming','Swimming in pool/ocean'),
+                           (3,'Jogging','Jogging every day/night'),
+                           (4,'Football','Team sport with many people'),
+                           (5,'Biking','Biking'),
+                           (6,'Gym','Workout in a gym');
+
+-- ----------------------------
+-- Table structure for table `experience`
+-- ----------------------------
+
+DROP TABLE IF EXISTS `experience`;
+CREATE TABLE `experience` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userid` int NULL DEFAULT NULL,
+  `sportid` int NULL DEFAULT NULL,
+  `level` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of Experience
+-- ----------------------------
+
+INSERT INTO `experience` VALUES (1,4,1, 'Beginner'),
+                           (2,4,2,'Intermediate'),
+                           (3,4,3,'Expert'),
+                           (4,5,5,'Intermediate');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
