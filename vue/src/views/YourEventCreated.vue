@@ -54,11 +54,11 @@ const state = reactive({
   dialogTableVisible : false,
   event:{
     name:"",
-    createrid: localStorage.getItem("userid"),
+    createrid:"",
     time:"",
     location:"",
     description:"",
-    participantid:localStorage.getItem("userid")}
+    participantid:""}
 })
 const rules = reactive({
   name: [
@@ -90,11 +90,8 @@ const handleDelete = (index) => {
 
 const edit = (index) => {
   state.dialogTableVisible = true
-  console.log(state.tableData[index].id)
-  console.log(state.event)
   request.get('/event/'+state.tableData[index].id).then(res => {
     state.event = reactive(res)
-    console.log(res)
   })
 }
 
