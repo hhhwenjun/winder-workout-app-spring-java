@@ -1,24 +1,15 @@
 <template>
   <div>
-    <div style="width: 600px; margin: 20px auto;">
-      <el-card :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
-        <h2 style="text-align: center; margin-bottom: 30px">Welcome Home, {{state.user.username}}</h2>
-        <div style="text-align: center; margin: auto">
-          <el-avatar style="width: 200px; height: 200px; margin-bottom: 30px"
-              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-          />
-        </div>
-        <el-card>
-          <div prop="bio" style="text-align: center;">
-            {{state.user.bio}}
-          </div>
-        </el-card>
-      </el-card>
-    </div>
-    <div style="width: 600px; margin: 20px auto;">
-      <el-card :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
-        <h2 style="text-align: center; margin-bottom: 30px">My Sport Preference</h2>
-      </el-card>
+    <div style="width: 400px; margin: 20px auto;">
+      <h2 style="text-align: center; margin-bottom: 30px">Account</h2>
+      <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
+        <el-form-item prop="username">
+          <el-input v-model="state.user.username" :prefix-icon="User" />
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input v-model="state.user.password" :prefix-icon="Lock" show-password  />
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -50,7 +41,7 @@ const rules = reactive({
   ],
 })
 
-const home = () => {
+const profileedit = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
       console.log(state.user);

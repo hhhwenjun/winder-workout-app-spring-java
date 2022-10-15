@@ -59,7 +59,7 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com',
-                           'house', NULL,
+                           'house', '1,4,6',
                            'I am a college student who want to make more friends with peers. I love sport and want to practice more about my skills.');
 INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL, NULL);
 INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless', NULL, NULL);
@@ -128,7 +128,10 @@ CREATE TABLE `experience` (
 INSERT INTO `experience` VALUES (1,4,1, 'Beginner'),
                            (2,4,2,'Intermediate'),
                            (3,4,3,'Expert'),
-                           (4,5,5,'Intermediate');
+                           (4,5,5,'Intermediate'),
+                           (5,1,1,'Expert'),
+                           (6,1,4,'Beginner'),
+                           (7,1,6,'Intermediate');
 
 SET FOREIGN_KEY_CHECKS = 1;
 

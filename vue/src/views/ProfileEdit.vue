@@ -1,14 +1,7 @@
 <template>
   <div>
     <div style="width: 400px; margin: 20px auto;">
-      <h2 style="text-align: center; margin-bottom: 30px">Account</h2>
       <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
-        <el-form-item prop="username">
-          <el-input v-model="state.user.username" :prefix-icon="User" />
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input v-model="state.user.password" :prefix-icon="Lock" show-password  />
-        </el-form-item>
         <h2 style="text-align: center; margin-bottom: 30px">Information</h2>
         <el-form-item prop="gender">
           <el-input v-model="state.user.sex" placeholder="Sex"/>

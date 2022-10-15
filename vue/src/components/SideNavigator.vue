@@ -35,7 +35,7 @@
           <el-icon><setting /></el-icon>Account
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/profileedit">Set password</el-menu-item>
+          <el-menu-item index="/setpassword">Set password</el-menu-item>
           <el-menu-item index="/profileedit">Profile</el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
