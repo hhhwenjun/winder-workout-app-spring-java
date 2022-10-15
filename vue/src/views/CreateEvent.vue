@@ -51,9 +51,7 @@ const event = reactive({
 const submit = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
-      console.log(event)
       request.post('/event/create', event).then(res => {
-        console.log(event)
         if (res.code === '200') {
           ElNotification({
             type: 'success',

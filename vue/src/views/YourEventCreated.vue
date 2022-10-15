@@ -71,7 +71,6 @@ request.get("/event/creater/"+localStorage.getItem("userid")).then( res => {
 })
 
 const handleDelete = (index) => {
-  console.log(state.tableData[index].id)
   request.delete("/event/"+state.tableData[index].id).then(res => {
     if (res.code === '200') {
       ElNotification({

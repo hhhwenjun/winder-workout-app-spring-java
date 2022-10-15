@@ -27,7 +27,6 @@ const state = reactive({
 
 request.get("/userrelation/mate/"+localStorage.getItem("userid")).then( res => {
   state.tableData = res
-  console.log(state.tableData)
 })
 
 const deleteMate = (index) => {

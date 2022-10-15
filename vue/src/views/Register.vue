@@ -56,7 +56,6 @@ const user = reactive({})
 const register = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
-      console.log(user);
       request.post('/user/register', user).then(res => {
         if (res.code === '200') {
           ElNotification({

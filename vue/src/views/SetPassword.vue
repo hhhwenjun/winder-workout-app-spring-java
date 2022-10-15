@@ -29,7 +29,6 @@ let state = reactive({
 
 request.get('/user/userid/'+localStorage.getItem("userid")).then(res => {
   state.user = reactive(res)
-  console.log(state.user);
 })
 
 const rules = reactive({
@@ -44,7 +43,6 @@ const rules = reactive({
 const profileedit = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
-      console.log(state.user);
       request.post('/user/update', state.user).then(res => {
         if (res.code === '200') {
           ElNotification({

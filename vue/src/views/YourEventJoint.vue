@@ -34,7 +34,6 @@ const state = reactive({
 
 request.get("/event/participate/"+state.userid).then( res => {
   state.tableData = res
-  console.log(state.tableData[0].participantid)
 })
 
 const quit = (index) => {
