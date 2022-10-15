@@ -76,7 +76,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
         if (id == null || id == 0) {
-            return Result.error("参数错误");
+            return Result.error("Wrong Id");
         }
         return Result.success(userDao.deleteById(id) == 1);
     }

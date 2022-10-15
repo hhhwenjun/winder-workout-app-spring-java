@@ -31,6 +31,11 @@ public class EventController {
         return eventDao.getByparticipant(id);
     }
 
+    @GetMapping("/{id}")
+    public Event getByid(@PathVariable Integer id){
+        return eventDao.getByid(id);
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public Result create(@RequestBody Event event) {
         if (event.getName() == null) {
