@@ -46,7 +46,6 @@
 import {getCurrentInstance, reactive} from "vue";
 import request from "../request.js";
 import {ElNotification} from "element-plus";
-import router from "../router/index.js";
 
 const { proxy } = getCurrentInstance()
 

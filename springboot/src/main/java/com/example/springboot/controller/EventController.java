@@ -3,14 +3,10 @@ package com.example.springboot.controller;
 import com.example.springboot.common.Result;
 import com.example.springboot.dao.EventDao;
 import com.example.springboot.entity.Event;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
