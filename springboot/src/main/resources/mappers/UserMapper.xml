@@ -62,5 +62,9 @@
         SELECT * FROM user where username = #{username}
     </select>
 
+    <select id="getSport" resultType="com.example.springboot.entity.Sport">
+        SELECT sportname FROM sport WHERE FIND_IN_SET(id, (SELECT sportid FROM user WHERE username = #{username}))
+    </select>
+
 
 </mapper>

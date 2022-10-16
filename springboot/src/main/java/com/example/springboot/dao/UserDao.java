@@ -1,6 +1,7 @@
 package com.example.springboot.dao;
 
 import com.example.springboot.entity.User;
+import com.example.springboot.entity.Sport;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,7 +14,9 @@ public interface UserDao {
 
     User getById(Integer id);
 
-    User getByName(String name);
+    List<Sport> getSport(String username);
+
+    User getByName(String username);
 
     User getByUser(@Param("username") String username, @Param("password") String password);
 
