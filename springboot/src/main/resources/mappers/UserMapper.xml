@@ -66,5 +66,24 @@
         SELECT sportname FROM sport WHERE FIND_IN_SET(id, (SELECT sportid FROM user WHERE username = #{username}))
     </select>
 
+    <select id="match" resultType="com.example.springboot.entity.User">
+        SELECT * from user
+        <where>
+            <if test="userId != null and userId != ''">
+                and id !=  #{userId}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex =  #{sex}
+            </if>
+            <if test="ageLower != null and ageLower != ''">
+                and age &gt;= #{ageLower}
+            </if>
+            <if test="ageUpper != null and ageUpper != ''">
+                and age &lt;= #{ageUpper}
+            </if>
+                and NOT FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userId=#{userId}))
+        </where>
+    </select>
+
 
 </mapper>

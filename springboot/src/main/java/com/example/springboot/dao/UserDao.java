@@ -1,5 +1,6 @@
 package com.example.springboot.dao;
 
+import com.example.springboot.controller.DTO.UserQueryDTO;
 import com.example.springboot.entity.User;
 import com.example.springboot.entity.Sport;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,5 +27,6 @@ public interface UserDao {
 
     int deleteById(Integer id);
 
+    List<User> match(UserQueryDTO userQueryDTO);
 
 }
