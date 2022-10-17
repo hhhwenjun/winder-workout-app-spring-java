@@ -26,8 +26,8 @@
           <el-menu-item index="/createevent">Create Event</el-menu-item>
         <el-sub-menu index="3-1">
           <template #title>Your event</template>
-          <el-menu-item index="/youreventcreated">You created</el-menu-item>
-          <el-menu-item index="/youreventjoint">You joint</el-menu-item>
+          <el-menu-item index="/youreventcreated">Created Event</el-menu-item>
+          <el-menu-item index="/youreventjoined">Joined Event</el-menu-item>
         </el-sub-menu>
       </el-sub-menu>
       <el-sub-menu index="4">

@@ -57,9 +57,9 @@ const routes = [
         component: () => import('../views/YourEventCreated.vue')
       },
       {
-        path: '/youreventjoint',
-        name: 'YourEventJoint',
-        component: () => import('../views/YourEventJoint.vue')
+        path: '/youreventjoined',
+        name: 'YourEventJoined',
+        component: () => import('../views/YourEventJoined.vue')
       },
     ]
   },

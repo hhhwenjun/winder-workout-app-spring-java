@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="width: 600px; margin: 20px auto;">
-      <el-card :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
+      <el-card :model="state.user" ref="ruleFormRef" size="large">
         <h2 style="text-align: center; margin-bottom: 30px">Welcome Home, {{state.user.username}}</h2>
         <div style="text-align: center; margin: auto">
           <el-avatar style="width: 200px; height: 200px; margin-bottom: 30px"
@@ -16,65 +16,35 @@
       </el-card>
     </div>
     <div style="width: 600px; margin: 20px auto;">
-      <el-card :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
-        <h2 style="text-align: center; margin-bottom: 30px">My Sport Preference</h2>
+      <el-card ref="ruleFormRef" size="large">
+        <h2 style="text-align: center; margin-bottom: 30px">My Favorite Sport</h2>
+        <div>
+          <el-table :data="state.tableData" stripe>
+            <el-table-column prop="sportname" label="sportname"></el-table-column>
+          </el-table>
+        </div>
       </el-card>
     </div>
   </div>
 </template>
 
 <script setup>
-import {ref, reactive, getCurrentInstance} from 'vue'
-import {User, Lock} from '@element-plus/icons-vue'
+import {reactive} from 'vue'
 import {ElNotification } from "element-plus";
 import request from "../request";
-import router from "../router";
-
-const { proxy } = getCurrentInstance()
 
 let state = reactive({
-  user:{}
+  user:{},
+  tableData: []
 })
 
 request.get('/user/userid/'+localStorage.getItem("userid")).then(res => {
   state.user = reactive(res)
 })
 
-const rules = reactive({
-  username: [
-    { required: true, message: 'Please enter username', trigger: 'blur' }
-  ],
-  password: [
-    { required: true, message: 'Please enter password', trigger: 'blur' }
-  ],
+request.get('user/sport/'+localStorage.getItem("userid")).then(res => {
+  state.tableData = res
 })
-
-const home = () => {
-  proxy.$refs.ruleFormRef.validate((valid) => {
-    if(valid) {
-      request.post('/user/update', state.user).then(res => {
-        if (res.code === '200') {
-          ElNotification({
-            type: 'success',
-            message: 'Edit Success'
-          })
-          localStorage.setItem('username', state.user.username)
-          location. reload()
-        } else {
-          ElNotification({
-            type: 'error',
-            message: res.msg
-          })
-        }
-      })
-    } else {
-      ElNotification({
-        type: 'error',
-        message: 'Errors'
-      })
-    }
-  })
-}
 
 </script>
 

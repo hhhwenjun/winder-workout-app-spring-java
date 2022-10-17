@@ -3,6 +3,7 @@ package com.example.springboot.controller;
 import com.example.springboot.common.Result;
 import com.example.springboot.controller.DTO.UserQueryDTO;
 import com.example.springboot.dao.UserDao;
+import com.example.springboot.entity.Sport;
 import com.example.springboot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -81,6 +82,11 @@ public class UserController {
     @GetMapping("/match")  //   /user/page?currentPage=1&pageSize=10
     public List<User> match(UserQueryDTO userQueryDTO) {
         return userDao.match(userQueryDTO);
+    }
+
+    @GetMapping("/sport/{userid}")
+    public List<Sport> getSport(@PathVariable Integer userid){
+        return userDao.getSport(userid);
     }
 
 

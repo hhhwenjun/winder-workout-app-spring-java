@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div style="margin-bottom: 20px">
     <el-input style="width: 260px; margin-right: 10px" v-model="sex" placeholder="Sex" clearable></el-input>
     <el-input style="width: 260px; margin-right: 10px" v-model="ageLower" placeholder="Age from" clearable></el-input>

@@ -15,7 +15,7 @@ public interface UserDao {
 
     User getById(Integer id);
 
-    List<Sport> getSport(String username);
+    List<Sport> getSport(Integer userid);
 
     User getByName(String username);
 
