@@ -15,6 +15,9 @@
         <el-form-item prop="description">
           <el-input v-model="event.description" placeholder="Description"  />
         </el-form-item>
+        <el-form-item prop="sportid">
+          <el-input v-model="event.sportid" placeholder="sportid"  />
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%" @click="submit">Submit</el-button>
         </el-form-item>
@@ -43,8 +46,8 @@ const event = reactive({
   time:"",
   location:"",
   description:"",
-  participantid:localStorage.getItem("userid")
-
+  participantid:localStorage.getItem("userid"),
+  sportid:""
 })
 
 

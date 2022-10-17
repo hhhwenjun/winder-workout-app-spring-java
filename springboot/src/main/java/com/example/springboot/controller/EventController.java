@@ -1,6 +1,7 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.common.Result;
+import com.example.springboot.controller.DTO.EventQueryDTO;
 import com.example.springboot.dao.EventDao;
 import com.example.springboot.entity.Event;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,11 @@ public class EventController {
             return Result.error("Wrong id");
         }
         return Result.success(eventDao.deleteById(id) == 1);
+    }
+
+    @GetMapping("/find")  //   /user/page?currentPage=1&pageSize=10
+    public List<Event> find(EventQueryDTO eventQueryDTO) {
+        return eventDao.find(eventQueryDTO);
     }
 
 }

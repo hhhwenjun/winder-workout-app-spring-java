@@ -29,7 +29,8 @@ const state = reactive({
     time:"",
     location:"",
     description:"",
-    participantid:"",}
+    participantid:"",
+    sportid:""}
 })
 
 request.get("/event/participate/"+state.userid).then( res => {

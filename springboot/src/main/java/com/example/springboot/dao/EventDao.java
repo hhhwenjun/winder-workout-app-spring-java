@@ -1,8 +1,8 @@
 package com.example.springboot.dao;
 
+import com.example.springboot.controller.DTO.EventQueryDTO;
 import com.example.springboot.entity.Event;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,4 +20,6 @@ public interface EventDao {
     int update(Event event);
 
     int deleteById(Integer id);
+
+    List<Event> find(EventQueryDTO eventQueryDTO);
 }
