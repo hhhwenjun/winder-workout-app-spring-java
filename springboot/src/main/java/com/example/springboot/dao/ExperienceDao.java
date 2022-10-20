@@ -17,7 +17,7 @@ public interface ExperienceDao {
 
     List<Sport> getNewSportByUserId(Integer userid);
 
-    int deleteByUserSportId(Integer userid, Integer sportid);
+    int deleteByUserSportId(@Param("userid") Integer userid, @Param("sportid") Integer sportid);
 
     int update(Experience experience);
 

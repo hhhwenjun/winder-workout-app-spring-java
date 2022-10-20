@@ -40,7 +40,7 @@
       <el-card ref="ruleFormRef" size="large">
         <h2 style="text-align: center; margin-bottom: 30px">Add Sport Preference</h2>
         <div>
-          <el-select v-model="sport" clearable placeholder="Select Sport" label="Sport">
+          <el-select v-model="userNewSport.sportname" clearable placeholder="Select Sport" label="Sport">
             <el-option
                 v-for="item in state.sport_options"
                 :key="item.sportname"
@@ -48,7 +48,8 @@
                 :value="item.sportname"
             />
           </el-select>
-          <el-select v-model="experience" clearable placeholder="Select Level" label="Level" style="margin-left: 50px">
+          <el-select v-model="userNewSport.sportlevel" clearable placeholder="Select Level" label="Level"
+                     style="margin-left: 50px">
             <el-option
                 v-for="item in level_options"
                 :key="item.value"
@@ -61,6 +62,7 @@
               type="danger"
               #default="scope"
               style="margin-left: 50px"
+              @click="add"
           >Add
           </el-button>
         </div>
@@ -73,10 +75,7 @@
 import {reactive, ref} from 'vue'
 import {ElNotification} from "element-plus";
 import request from "../request";
-
-
-const experience = ref('')
-const sport = ref('')
+import router from "../router/index.js";
 
 const level_options = [
   {
@@ -116,6 +115,30 @@ const deleteMate = (index) => {
       ElNotification({
         type: 'success',
         message: 'Delete Success'
+      })
+      location.reload()
+    } else {
+      ElNotification({
+        type: 'error',
+        message: res.msg
+      })
+    }
+  })
+}
+
+const userNewSport = reactive({
+  userid: localStorage.getItem("userid"),
+  sportid: "", // how to get proper sport id
+  sportname: "",
+  sportlevel: "",
+})
+
+const add = () => {
+  request.post('/experience/create', userNewSport).then(res => {
+    if (res.code === '200') {
+      ElNotification({
+        type: 'success',
+        message: 'Create Success'
       })
       location.reload()
     } else {
