@@ -128,7 +128,6 @@ const deleteMate = (index) => {
 
 const userNewSport = reactive({
   userid: localStorage.getItem("userid"),
-  sportid: "", // how to get proper sport id
   sportname: "",
   sportlevel: "",
 })

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/experience")
@@ -62,7 +63,7 @@ public class ExperienceController {
         List<Experience> userSports = getExperienceByUserId(experience.getUserid());
         if (userSports != null){
             for (Experience userSport : userSports){
-                if (userSport.getSportid() == sportId){
+                if (Objects.equals(userSport.getSportid(), sportId)){
                     // already created it, no need to create, but need to update
                     return Result.error("Exist user and this sport");
                 }
