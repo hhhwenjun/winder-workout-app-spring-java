@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="width: 400px; margin: 20px auto;">
+    <div style="width: 500px; height: 900px; margin: 20px auto;">
       <h1 style="text-align: center; margin-bottom: 30px">Account</h1>
       <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
         <el-form-item prop="username">
