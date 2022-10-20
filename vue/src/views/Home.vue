@@ -23,7 +23,7 @@
             <el-table-column prop="sportname" label="Sport Name"></el-table-column>
             <el-table-column prop="sportlevel" label="Level"></el-table-column>
             <el-table-column label="Operations">
-              <template>
+              <template #default="scope">
                 <el-button
                     size="small"
                     type="danger"
@@ -56,6 +56,13 @@
                 :value="item.value"
             />
           </el-select>
+          <el-button
+              size="small"
+              type="danger"
+              #default="scope"
+              style="margin-left: 50px"
+          >Add
+          </el-button>
         </div>
       </el-card>
     </div>
@@ -102,43 +109,23 @@ request.get('/experience/user-experience/' + localStorage.getItem("userid")).the
   state.userTableData = res
 })
 
-// const deleteMate = (index) => {
-//   request.get('/userrelation/relation/'+localStorage.getItem("userid")).then(res => {
-//     let userRelation = res
-//
-//     let listofMate = userRelation.mateid.split(",")
-//     let newMateId = ""
-//
-//
-//     for(var i =0;i<listofMate.length;i++){
-//       if(listofMate[i]!==String(state.tableData[index].id)){
-//         newMateId += listofMate[i]
-//         newMateId += ","
-//       }
-//     }
-//
-//     if (newMateId!=""){
-//       newMateId = newMateId.substring(0,newMateId.length-1)
-//     }
-//
-//     userRelation.mateid = newMateId
-//
-//     request.post('/userrelation/update', userRelation).then(res => {
-//       if (res.code === '200') {
-//         ElNotification({
-//           type: 'success',
-//           message: 'Delete Success'
-//         })
-//         location.reload()
-//       } else {
-//         ElNotification({
-//           type: 'error',
-//           message: res.msg
-//         })
-//       }
-//     })
-//   })
-// }
+const deleteMate = (index) => {
+  request.delete('/experience/delete-experience/' + localStorage.getItem("userid") + '/'
+      + state.userTableData[index].sportid).then(res => {
+    if (res.code === '200') {
+      ElNotification({
+        type: 'success',
+        message: 'Delete Success'
+      })
+      location.reload()
+    } else {
+      ElNotification({
+        type: 'error',
+        message: res.msg
+      })
+    }
+  })
+}
 
 </script>
 

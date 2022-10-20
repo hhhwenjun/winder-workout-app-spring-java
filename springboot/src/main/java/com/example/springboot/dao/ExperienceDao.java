@@ -17,6 +17,8 @@ public interface ExperienceDao {
 
     List<Sport> getNewSportByUserId(Integer userid);
 
+    int deleteByUserSportId(Integer userid, Integer sportid);
+
     int update(Experience experience);
 
     int insert(Experience experience);

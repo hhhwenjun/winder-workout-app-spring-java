@@ -7,6 +7,7 @@
     <insert id="insert">
         INSERT INTO `experience`(userid, sportid, sportname, sportlevel) values(#{userid},  #{sportid},  #{sportname},  #{sportlevel});
     </insert>
+
     <update id="update">
         update `experience`
         <set>
@@ -25,6 +26,10 @@
         </set>
         where id = #{id}
     </update>
+
+    <delete id="deleteByUserSportId">
+        DELETE FROM `experience` WHERE userid = #{userid} AND sportid = #{sportid};
+    </delete>
 
     <select id="getAllExperience" resultType="com.example.springboot.entity.Experience">
         SELECT * FROM experience

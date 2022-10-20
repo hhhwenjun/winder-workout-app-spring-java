@@ -31,6 +31,14 @@ public class ExperienceController {
         return experienceDao.getNewSportByUserId(userid);
     }
 
+    @DeleteMapping("/delete-experience/{userid}/{sportid}")
+    public Result deleteByUserSportId(@PathVariable Integer userid, @PathVariable Integer sportid) {
+        if (userid == null || sportid == null || userid == 0 || sportid == 0) {
+            return Result.error("Wrong Id");
+        }
+        return Result.success(experienceDao.deleteByUserSportId(userid, sportid) == 1);
+    }
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public Result update(Experience experience) {
         List<Experience> userSports = getExperienceByUserId(experience.getUserid());
