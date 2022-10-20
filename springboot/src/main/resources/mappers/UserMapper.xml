@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.springboot.dao.UserDao">
     <insert id="insert">
-        INSERT INTO `user`(username, password, sex, age, phone, email, address) values(#{username},  #{password},  #{sex},  #{age},  #{phone},  #{email},  #{address});
+        INSERT INTO `user`(username, password, sex, age, phone, email, address, bio, sportid) values(#{username},  #{password},  #{sex},  #{age},  #{phone},  #{email},  #{address},  #{bio},  #{sportid});
     </insert>
 
     <update id="update">
@@ -32,6 +32,12 @@
             <if test="address != null and address != ''">
                 address = #{address},
             </if>
+            <if test="bio != null and bio != ''">
+                bio = #{bio},
+            </if>
+            <if test="sportid != null and sportid != ''">
+                sportid = #{sportid},
+            </if>
         </set>
         where id = #{id}
     </update>
@@ -54,6 +60,29 @@
 
     <select id="getByName" resultType="com.example.springboot.entity.User">
         SELECT * FROM user where username = #{username}
+    </select>
+
+    <select id="getSport" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport WHERE FIND_IN_SET(id, (SELECT sportid FROM user WHERE id=#{userid}))
+    </select>
+
+    <select id="match" resultType="com.example.springboot.entity.User">
+        SELECT * from user
+        <where>
+            <if test="userId != null and userId != ''">
+                and id !=  #{userId}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex =  #{sex}
+            </if>
+            <if test="ageLower != null and ageLower != ''">
+                and age &gt;= #{ageLower}
+            </if>
+            <if test="ageUpper != null and ageUpper != ''">
+                and age &lt;= #{ageUpper}
+            </if>
+                and NOT FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userId=#{userId}))
+        </where>
     </select>
 
 

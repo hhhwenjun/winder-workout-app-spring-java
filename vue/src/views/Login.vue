@@ -7,6 +7,7 @@ import router from "../router";
 const { proxy } = getCurrentInstance()
 const checked1 = ref(true)
 
+// login validation rules
 const rules = reactive({
   username: [
     { required: true, message: 'Please enter username', trigger: 'blur' }
@@ -19,8 +20,10 @@ const rules = reactive({
 const user = reactive({})
 
 const login = () => {
+  // when click, get the instance
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
+      // send request to backend, promise
       request.post('/user/login', user).then(res => {
         if (res.code === '200') {
           ElNotification({

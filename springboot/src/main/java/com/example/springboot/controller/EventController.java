@@ -1,16 +1,13 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.common.Result;
+import com.example.springboot.controller.DTO.EventQueryDTO;
 import com.example.springboot.dao.EventDao;
 import com.example.springboot.entity.Event;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -29,6 +26,11 @@ public class EventController {
     @GetMapping("/participate/{id}")
     public List<Event> getByparticipant(@PathVariable Integer id){
         return eventDao.getByparticipant(id);
+    }
+
+    @GetMapping("/{id}")
+    public Event getByid(@PathVariable Integer id){
+        return eventDao.getByid(id);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -57,6 +59,11 @@ public class EventController {
             return Result.error("Wrong id");
         }
         return Result.success(eventDao.deleteById(id) == 1);
+    }
+
+    @GetMapping("/find")  //   /user/page?currentPage=1&pageSize=10
+    public List<Event> find(EventQueryDTO eventQueryDTO) {
+        return eventDao.find(eventQueryDTO);
     }
 
 }

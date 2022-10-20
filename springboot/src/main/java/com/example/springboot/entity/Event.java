@@ -13,4 +13,5 @@ public class Event {
     private String location;
     private String description;
     private String participantid;
+    private Integer sportid;
 }

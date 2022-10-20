@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.springboot.dao.SportDao">
+    <select id="findAllSport" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport
+    </select>
+
+    <select id="getBySportId" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport WHERE id = #{id}
+    </select>
+
+    <select id="getBySportName" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport WHERE sportname= #{sportname}
+    </select>
+
+</mapper>

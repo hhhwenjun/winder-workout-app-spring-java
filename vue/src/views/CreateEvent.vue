@@ -15,6 +15,9 @@
         <el-form-item prop="description">
           <el-input v-model="event.description" placeholder="Description"  />
         </el-form-item>
+        <el-form-item prop="sportid">
+          <el-input v-model="event.sportid" placeholder="sportid"  />
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%" @click="submit">Submit</el-button>
         </el-form-item>
@@ -43,17 +46,15 @@ const event = reactive({
   time:"",
   location:"",
   description:"",
-  participantid:localStorage.getItem("userid")
-
+  participantid:localStorage.getItem("userid"),
+  sportid:""
 })
 
 
 const submit = () => {
   proxy.$refs.ruleFormRef.validate((valid) => {
     if(valid) {
-      console.log(event)
       request.post('/event/create', event).then(res => {
-        console.log(event)
         if (res.code === '200') {
           ElNotification({
             type: 'success',

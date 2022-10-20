@@ -19,11 +19,8 @@
         where id = #{id}
     </update>
 
-
-
     <select id="getByuserid" resultType="com.example.springboot.entity.UserRelation">
         SELECT * FROM userrelation WHERE userid = #{userid}
-
     </select>
 
     <select id="getMate" resultType="com.example.springboot.entity.User">

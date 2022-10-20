@@ -1,28 +1,13 @@
 <template>
   <div>
     <div style="width: 400px; margin: 20px auto;">
+      <h2 style="text-align: center; margin-bottom: 30px">Account</h2>
       <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
-        <h2 style="text-align: center; margin-bottom: 30px">Information</h2>
-        <el-form-item prop="gender">
-          <el-input v-model="state.user.sex" placeholder="Sex"/>
+        <el-form-item prop="username">
+          <el-input v-model="state.user.username" :prefix-icon="User" />
         </el-form-item>
-        <el-form-item prop="age">
-          <el-input v-model="state.user.age" placeholder="Age"  />
-        </el-form-item>
-        <el-form-item prop="phone">
-          <el-input v-model="state.user.phone" placeholder="Phone" />
-        </el-form-item>
-        <el-form-item prop="email">
-          <el-input v-model="state.user.email" placeholder="Email"  />
-        </el-form-item>
-        <el-form-item prop="address">
-          <el-input v-model="state.user.address" placeholder="address" />
-        </el-form-item>
-        <el-form-item prop="bio">
-          <el-input v-model="state.user.bio" placeholder="bio" type="textarea"/>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" style="width: 100%" @click="profileedit">Finish</el-button>
+        <el-form-item prop="password">
+          <el-input v-model="state.user.password" :prefix-icon="Lock" show-password  />
         </el-form-item>
       </el-form>
     </div>

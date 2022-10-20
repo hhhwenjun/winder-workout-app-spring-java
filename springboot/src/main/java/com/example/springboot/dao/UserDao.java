@@ -1,6 +1,8 @@
 package com.example.springboot.dao;
 
+import com.example.springboot.controller.DTO.UserQueryDTO;
 import com.example.springboot.entity.User;
+import com.example.springboot.entity.Sport;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,7 +15,9 @@ public interface UserDao {
 
     User getById(Integer id);
 
-    User getByName(String name);
+    List<Sport> getSport(Integer userid);
+
+    User getByName(String username);
 
     User getByUser(@Param("username") String username, @Param("password") String password);
 
@@ -23,5 +27,6 @@ public interface UserDao {
 
     int deleteById(Integer id);
 
+    List<User> match(UserQueryDTO userQueryDTO);
 
 }
