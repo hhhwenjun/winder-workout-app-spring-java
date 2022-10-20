@@ -5,13 +5,37 @@
 
 <mapper namespace="com.example.springboot.dao.ExperienceDao">
     <insert id="insert">
-        INSERT INTO `experience`(userid, sportid, level) values(#{userid},  #{sportid},  #{level});
+        INSERT INTO `experience`(userid, sportid, sportname, sportlevel) values(#{userid},  #{sportid},  #{sportname},  #{sportlevel});
     </insert>
+    <update id="update">
+        update `experience`
+        <set>
+            <if test="userid != null and userid != ''">
+                userid = #{userid},
+            </if>
+            <if test="sportid != null and sportid != ''">
+                sportid = #{sportid},
+            </if>
+            <if test="sportname != null and sportname != ''">
+                sportname = #{sportname},
+            </if>
+            <if test="sportlevel  != null and sportlevel  != ''">
+                sportlevel = #{sportlevel},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 
     <select id="getAllExperience" resultType="com.example.springboot.entity.Experience">
-        SELECT * FROM Experience
+        SELECT * FROM experience
     </select>
     <select id="getExperienceByUserId" resultType="com.example.springboot.entity.Experience">
-        SELECT * FROM Experience WHERE userid = #{userId}
+        SELECT * FROM experience WHERE userid = #{userid}
+    </select>
+    <select id="getUserSportLevel" resultType="com.example.springboot.entity.Experience">
+        SELECT * FROM experience WHERE userid = #{userid} AND sportid = #{sportid}
+    </select>
+    <select id="getNewSportByUserId" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport WHERE sportname NOT IN (SELECT sportname FROM experience WHERE userid = #{userid})
     </select>
 </mapper>

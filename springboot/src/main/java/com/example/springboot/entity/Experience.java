@@ -7,5 +7,7 @@ public class Experience {
     private Integer id;
     private Integer userid;
     private Integer sportid;
-    private String level;
+    private String sportname;
+    private String sportlevel;
 }
+

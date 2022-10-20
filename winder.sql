@@ -92,8 +92,8 @@ INSERT INTO `userrelation` VALUES (3, 3, '1,2');
 DROP TABLE IF EXISTS `sport`;
 CREATE TABLE `sport` (
  `id` int NOT NULL AUTO_INCREMENT,
- `sportname` varchar(255) NOT NULL,
- `description` varchar(255) DEFAULT NULL,
+ `sportname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+ `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
@@ -117,7 +117,8 @@ CREATE TABLE `experience` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` int NULL DEFAULT NULL,
   `sportid` int NULL DEFAULT NULL,
-  `level` varchar(255) DEFAULT NULL,
+  `sportname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `sportlevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
@@ -125,13 +126,13 @@ CREATE TABLE `experience` (
 -- Records of Experience
 -- ----------------------------
 
-INSERT INTO `experience` VALUES (1,4,1, 'Beginner'),
-                           (2,4,2,'Intermediate'),
-                           (3,4,3,'Expert'),
-                           (4,5,5,'Intermediate'),
-                           (5,1,1,'Expert'),
-                           (6,1,4,'Beginner'),
-                           (7,1,6,'Intermediate');
+INSERT INTO `experience` VALUES (1,4,1, 'Basketball', 'Beginner'),
+                           (2,4,2, 'Swimming', 'Intermediate'),
+                           (3,4,3,'Jogging', 'Expert'),
+                           (4,5,5,'Biking', 'Intermediate'),
+                           (5,1,1,'Basketball', 'Expert'),
+                           (6,1,4,'Football', 'Beginner'),
+                           (7,1,6,'Gym', 'Intermediate');
 
 SET FOREIGN_KEY_CHECKS = 1;
 

@@ -4,10 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.springboot.dao.SportDao">
-    <insert id="insertSport"></insert>
-    <update id="update"></update>
-    <delete id="deleteBySportId"></delete>
-    <select id="findAllSport" resultType="com.example.springboot.entity.Sport"></select>
-    <select id="getBySportId" resultType="com.example.springboot.entity.Sport"></select>
-    <select id="getBySportName" resultType="com.example.springboot.entity.Sport"></select>
+    <select id="findAllSport" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport
+    </select>
+
+    <select id="getBySportId" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport WHERE id = #{id}
+    </select>
+
+    <select id="getBySportName" resultType="com.example.springboot.entity.Sport">
+        SELECT * FROM sport WHERE sportname= #{sportname}
+    </select>
+
 </mapper>

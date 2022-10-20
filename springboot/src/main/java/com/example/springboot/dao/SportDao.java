@@ -12,10 +12,4 @@ public interface SportDao {
     Sport getBySportId(Integer id);
 
     Sport getBySportName(String sportname);
-
-    int insertSport(Sport sport);
-
-    int update(Sport sport);
-
-    int deleteBySportId(Integer sportid);
 }
