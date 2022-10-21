@@ -47,11 +47,6 @@ const routes = [
         component: () => import('../views/MessageSent.vue')
       },
       {
-        path: '/messagereceived',
-        name: 'MessageReceived',
-        component: () => import('../views/MessageReceived.vue')
-      },
-      {
         path: '/findevent',
         name: 'Findevent',
         component: () => import('../views/FindEvent.vue')
