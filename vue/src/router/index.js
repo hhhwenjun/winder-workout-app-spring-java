@@ -17,6 +17,11 @@ const routes = [
         component: () => import('../views/ProfileEdit.vue')
       },
       {
+        path: '/setpassword',
+        name: 'SetPassword',
+        component: () => import('../views/SetPassword.vue')
+      },
+      {
         path: '/matchmate',
         name: 'MatchMate',
         component: () => import('../views/MatchMate.vue')
@@ -39,7 +44,7 @@ const routes = [
       {
         path: '/findevent',
         name: 'Findevent',
-        component: () => import('../views/FineEvent.vue')
+        component: () => import('../views/FindEvent.vue')
       },
       {
         path: '/createevent',
@@ -52,9 +57,9 @@ const routes = [
         component: () => import('../views/YourEventCreated.vue')
       },
       {
-        path: '/youreventjoint',
-        name: 'YourEventJoint',
-        component: () => import('../views/YourEventJoint.vue')
+        path: '/youreventjoined',
+        name: 'YourEventJoined',
+        component: () => import('../views/YourEventJoined.vue')
       },
     ]
   },
