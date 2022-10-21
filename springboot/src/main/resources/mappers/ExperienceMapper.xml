@@ -5,8 +5,7 @@
 
 <mapper namespace="com.example.springboot.dao.ExperienceDao">
     <insert id="insert">
-        INSERT INTO `experience`(userid, sportid, sportname, sportlevel) values(#{userid},
-                                                                                (SELECT id FROM sport WHERE sportname = #{sportname}),  #{sportname}, #{sportlevel});
+        INSERT INTO `experience`(userid, sportid, sportname, sportlevel) values(#{userid}, #{sportid},  #{sportname}, #{sportlevel});
     </insert>
 
     <update id="update">

@@ -128,24 +128,29 @@ const deleteMate = (index) => {
 
 const userNewSport = reactive({
   userid: localStorage.getItem("userid"),
+  sportid:"",
   sportname: "",
   sportlevel: "",
 })
 
 const add = () => {
-  request.post('/experience/create', userNewSport).then(res => {
-    if (res.code === '200') {
-      ElNotification({
-        type: 'success',
-        message: 'Create Success'
-      })
-      location.reload()
-    } else {
-      ElNotification({
-        type: 'error',
-        message: res.msg
-      })
-    }
+  request.get('/sport/sportname/'+userNewSport.sportname).then(res => {
+  userNewSport.sportid = res.id
+    console.log(userNewSport)
+    request.post('/experience/create', userNewSport).then(res => {
+      if (res.code === '200') {
+        ElNotification({
+          type: 'success',
+          message: 'Create Success'
+        })
+        location.reload()
+      } else {
+        ElNotification({
+          type: 'error',
+          message: res.msg
+        })
+      }
+    })
   })
 }
 

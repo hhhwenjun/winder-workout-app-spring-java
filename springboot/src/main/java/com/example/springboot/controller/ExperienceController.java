@@ -58,7 +58,7 @@ public class ExperienceController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Result create(Experience experience) {
+    public Result create(@RequestBody Experience experience) {
         Integer sportId = experience.getSportid();
         List<Experience> userSports = getExperienceByUserId(experience.getUserid());
         if (userSports != null){
