@@ -58,12 +58,12 @@ public class ExperienceController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Result create(Experience experience) {
+    public Result create(@RequestBody Experience experience) {
         Integer sportId = experience.getSportid();
         List<Experience> userSports = getExperienceByUserId(experience.getUserid());
-        if (userSports != null){
-            for (Experience userSport : userSports){
-                if (Objects.equals(userSport.getSportid(), sportId)){
+        if (userSports != null) {
+            for (Experience userSport : userSports) {
+                if (Objects.equals(userSport.getSportid(), sportId)) {
                     // already created it, no need to create, but need to update
                     return Result.error("Exist user and this sport");
                 }

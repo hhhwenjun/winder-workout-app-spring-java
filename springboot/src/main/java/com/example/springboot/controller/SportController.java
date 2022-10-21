@@ -22,12 +22,12 @@ public class SportController {
         return sportDao.findAllSport();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/sportid/{id}")
     public Sport getBySportId(@PathVariable Integer id) {
         return sportDao.getBySportId(id);
     }
 
-    @GetMapping("/{sportname}")
+    @GetMapping("/sportname/{sportname}")
     public Sport getBySportName(@PathVariable String sportname) {
         return sportDao.getBySportName(sportname);
     }
