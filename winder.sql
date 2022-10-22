@@ -27,14 +27,15 @@ CREATE TABLE `event`  (
   `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `participantid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `sportid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of event
 -- ----------------------------
-INSERT INTO `event` VALUES (1, 'event1', 1, '2022-10-07 10:44:18', 'gym', 'user1\'s event', '1,2,3');
-INSERT INTO `event` VALUES (2, 'event2', 2, '2022-10-14 10:44:46', 'park', 'user2\'s event', '1,2');
+INSERT INTO `event` VALUES (1, 'event1', 1, '2022-10-07 10:44:18', 'Gym', 'user1\'s event', '1,2,3', 6);
+INSERT INTO `event` VALUES (2, 'event2', 2, '2022-10-14 10:44:46', 'Biking', 'user2\'s event', '1,2', 5);
 
 -- ----------------------------
 -- Table structure for user
