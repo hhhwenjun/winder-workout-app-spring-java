@@ -13,7 +13,7 @@
     <el-table-column label="Operations">
       <template #default="scope">
         <el-button text @click="add(scope.$index)"
-        >Add</el-button
+        >Like</el-button
         >
       </template>
     </el-table-column>
@@ -53,18 +53,20 @@ const add = (index) => {
   request.get('/userrelation/relation/'+localStorage.getItem("userid")).then(res => {
     let userRelation = res
 
-    if(userRelation.mateid.length>0) {
-      userRelation.mateid += ","
-      userRelation.mateid += state.tableData[index].id
+    if (userRelation.likeid == null) userRelation.likeid = ''
+
+    if(userRelation.likeid.length>0) {
+      userRelation.likeid += ","
+      userRelation.likeid += state.tableData[index].id
     }else{
-      userRelation.mateid += state.tableData[index].id
+      userRelation.likeid += state.tableData[index].id
     }
 
     request.post('/userrelation/update', userRelation).then(res => {
       if (res.code === '200') {
         ElNotification({
           type: 'success',
-          message: 'Match Success'
+          message: 'Like Successful'
         })
         match()
       } else {

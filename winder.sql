@@ -84,11 +84,11 @@ CREATE TABLE `userrelation`  (
 -- ----------------------------
 -- Records of userrelation
 -- ----------------------------
-INSERT INTO `userrelation` VALUES (1, 1, '2,3,4', '2,3,4', '2,3,4');
-INSERT INTO `userrelation` VALUES (2, 2, '1,3', '1,3', '1,3,4,5');
-INSERT INTO `userrelation` VALUES (3, 3, '1,2', '1,2', '1,2,4,5');
-INSERT INTO `userrelation` VALUES (4, 4, '1', '1,2,3', '1');
-INSERT INTO `userrelation` VALUES (5, 5, null, '2,3', null);
+INSERT INTO `userrelation` VALUES (1, 1, '2,3,4', null, '5');
+INSERT INTO `userrelation` VALUES (2, 2, '1,3', null, '4,5');
+INSERT INTO `userrelation` VALUES (3, 3, '1,2', null, '4,5');
+INSERT INTO `userrelation` VALUES (4, 4, '1', '2,3', '5');
+INSERT INTO `userrelation` VALUES (5, 5, null, '1,2,3,4', null);
 
 -- ----------------------------
 -- Table structure for table `sport`

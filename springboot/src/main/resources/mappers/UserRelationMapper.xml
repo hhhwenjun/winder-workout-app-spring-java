@@ -14,7 +14,9 @@
             <if test="userid != null and userid != ''">
                 userid = #{userid},
             </if>
-                mateid = #{mateid},
+            mateid = #{mateid},
+            likeid = #{likeid},
+            maylikeid = #{maylikeid}
         </set>
         where id = #{id}
     </update>

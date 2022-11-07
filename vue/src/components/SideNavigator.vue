@@ -10,7 +10,9 @@
         <template #title>
           <el-icon><message /></el-icon>Mate
         </template>
-          <el-menu-item index="/matchmate">Match mate</el-menu-item>
+          <el-menu-item index="/findmate">Find Your Mate</el-menu-item>
+          <el-menu-item index="/youlike">People You Like</el-menu-item>
+          <el-menu-item index="/likeyou">People Interest You</el-menu-item>
           <el-menu-item index="/yourmate">Your mate</el-menu-item>
         <el-sub-menu index="2-1">
           <template #title>Message</template>
