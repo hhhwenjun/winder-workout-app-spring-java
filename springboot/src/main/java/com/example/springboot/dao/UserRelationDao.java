@@ -11,6 +11,10 @@ import java.util.List;
 public interface UserRelationDao {
     List<User> getMate(Integer userid) ;
 
+    List<User> getYouLike(Integer userid) ;
+
+    List<User> getYouMayLike(Integer userid) ;
+
     UserRelation getByuserid(Integer userid) ;
 
     int update(UserRelation userRelation);

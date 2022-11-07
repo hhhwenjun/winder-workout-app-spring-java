@@ -75,6 +75,8 @@ CREATE TABLE `userrelation`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` int NULL DEFAULT NULL,
   `mateid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `likeid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `maylikeid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `userid`(`userid` ASC) USING BTREE COMMENT 'unique user'
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
@@ -82,9 +84,11 @@ CREATE TABLE `userrelation`  (
 -- ----------------------------
 -- Records of userrelation
 -- ----------------------------
-INSERT INTO `userrelation` VALUES (1, 1, '2,3');
-INSERT INTO `userrelation` VALUES (2, 2, '1,3');
-INSERT INTO `userrelation` VALUES (3, 3, '1,2');
+INSERT INTO `userrelation` VALUES (1, 1, '2,3,4', '2,3,4', '2,3,4');
+INSERT INTO `userrelation` VALUES (2, 2, '1,3', '1,3', '1,3,4,5');
+INSERT INTO `userrelation` VALUES (3, 3, '1,2', '1,2', '1,2,4,5');
+INSERT INTO `userrelation` VALUES (4, 4, '1', '1,2,3', '1');
+INSERT INTO `userrelation` VALUES (5, 5, null, '2,3', null);
 
 -- ----------------------------
 -- Table structure for table `sport`
