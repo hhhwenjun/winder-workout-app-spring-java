@@ -64,6 +64,39 @@ const dislike = (index) => {
       }
     })
   })
+
+  // remove you from other person's maylike
+  request.get('/userrelation/relation/'+state.tableData[index].id).then(res => {
+    let userRelation = res
+
+    let listOfMayLike = userRelation.maylikeid.split(",")
+    let newMayLikeId = ""
+
+
+    for(var i =0;i<listOfMayLike.length;i++){
+      if(listOfMayLike[i]!==String(localStorage.getItem("userid"))){
+        newMayLikeId += listOfMayLike[i]
+        newMayLikeId += ","
+      }
+    }
+
+    if (newMayLikeId!=""){
+      newMayLikeId = newMayLikeId.substring(0,newMayLikeId.length-1)
+    }
+
+    userRelation.maylikeid = newMayLikeId
+
+    request.post('/userrelation/update', userRelation).then(res => {
+      if (res.code === '200') {
+        location.reload()
+      } else {
+        ElNotification({
+          type: 'error',
+          message: res.msg
+        })
+      }
+    })
+  })
 }
 </script>
 

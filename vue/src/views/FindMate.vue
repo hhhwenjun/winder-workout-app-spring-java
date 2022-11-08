@@ -53,7 +53,7 @@ const add = (index) => {
   request.get('/userrelation/relation/'+localStorage.getItem("userid")).then(res => {
     let userRelation = res
 
-    if (userRelation.likeid == null) userRelation.likeid = ''
+    if (userRelation.likeid == null) userRelation.likeid = ""
 
     if(userRelation.likeid.length>0) {
       userRelation.likeid += ","

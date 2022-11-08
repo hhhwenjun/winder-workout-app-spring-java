@@ -81,7 +81,8 @@
             <if test="ageUpper != null and ageUpper != ''">
                 and age &lt;= #{ageUpper}
             </if>
-                and NOT FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userId=#{userId}))
+                and NOT FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userid=#{userId}))
+                and NOT FIND_IN_SET(id,(SELECT likeid FROM userrelation WHERE userid=#{userId}))
         </where>
     </select>
 
