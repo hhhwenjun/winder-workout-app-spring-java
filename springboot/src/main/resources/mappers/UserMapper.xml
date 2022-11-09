@@ -67,28 +67,29 @@
     </select>
 
     <select id="match" resultType="com.example.springboot.entity.User">
-        SELECT * from user
+        SELECT DISTINCT user.id, username, sex, age, bio from user
+        LEFT JOIN experience ON user.id = experience.userid
         <where>
             <if test="userId != null and userId != ''">
-                and id !=  #{userId}
+                and user.id !=  #{userId}
             </if>
             <if test="sex != null and sex != ''">
-                and sex =  #{sex}
+                and user.sex =  #{sex}
             </if>
             <if test="ageLower != null and ageLower != ''">
-                and age &gt;= #{ageLower}
+                and user.age &gt;= #{ageLower}
             </if>
             <if test="ageUpper != null and ageUpper != ''">
-                and age &lt;= #{ageUpper}
+                and user.age &lt;= #{ageUpper}
             </if>
             <if test="sport != null and sport != ''">
-                and sport = #{sport}
+                and experience.sportid = #{sport}
             </if>
             <if test="experience != null and experience != ''">
-                and experience = #{experience}
+                and experience.sportlevel = #{experience}
             </if>
-                and NOT FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userid=#{userId}))
-                and NOT FIND_IN_SET(id,(SELECT likeid FROM userrelation WHERE userid=#{userId}))
+                and NOT FIND_IN_SET(user.id,(SELECT mateid FROM userrelation WHERE userid=#{userId}))
+                and NOT FIND_IN_SET(user.id,(SELECT likeid FROM userrelation WHERE userid=#{userId}))
         </where>
     </select>
 
