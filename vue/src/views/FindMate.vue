@@ -1,6 +1,5 @@
 <template>
   <div style="margin-bottom: 20px">
-    <!--    <el-input style="width: 260px; margin-right: 10px" v-model="sex" placeholder="Sex" clearable></el-input>-->
     <el-select style="width: 200px; margin: 10px" v-model="sex" placeholder="Gender" clearable label="Gender">
       <el-option v-for="item in state.gender_options" :label="item.label" :value="item.value"/>
     </el-select>
