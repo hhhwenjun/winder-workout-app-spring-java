@@ -30,11 +30,6 @@ CREATE TABLE `README`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of README
--- ----------------------------
-INSERT INTO `README` VALUES (1, 'To recover your lost Database send 0.018 Bitcoin (BTC) to our Bitcoin address: bc1q45759f0xxhxryn3fnzknl9hz89dqc00tmfse03  After this, contact us by email with your Server IP or Domain Name and a Proof of Payment (Payment ID). Your Database is downloaded and backed up on our servers. Backups that we have right now: winder. Any email without your server IP Address or Domain Name and a Proof of Payment together will be ignored. If we dont receive your payment in the next 5 Days, we will delete or leak your sensitive information.', 'bc1q45759f0xxhxryn3fnzknl9hz89dqc00tmfse03', 'sqlrecov4813@proton.me');
-
--- ----------------------------
 -- Table structure for event
 -- ----------------------------
 DROP TABLE IF EXISTS `event`;

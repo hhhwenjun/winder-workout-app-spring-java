@@ -81,6 +81,12 @@
             <if test="ageUpper != null and ageUpper != ''">
                 and age &lt;= #{ageUpper}
             </if>
+            <if test="sport != null and sport != ''">
+                and sport = #{sport}
+            </if>
+            <if test="experience != null and experience != ''">
+                and experience = #{experience}
+            </if>
                 and NOT FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userid=#{userId}))
                 and NOT FIND_IN_SET(id,(SELECT likeid FROM userrelation WHERE userid=#{userId}))
         </where>
