@@ -51,7 +51,7 @@ const experience = ref('')
 
 const state = reactive({
   tableDate: [],
-  gender_options: [{value: 'female',label: 'Female'},{value: 'male',label: 'Male'}],
+  gender_options: [{value: 'female', label: 'Female'}, {value: 'male', label: 'Male'}],
   level_options: ["Beginner", "Intermediate", "Expert"],
   sport_options: []
 })
