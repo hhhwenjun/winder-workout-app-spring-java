@@ -11,23 +11,11 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 08/11/2022 21:08:23
+ Date: 09/11/2022 23:18:21
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for README
--- ----------------------------
-DROP TABLE IF EXISTS `README`;
-CREATE TABLE `README`  (
-  `id` int NOT NULL,
-  `readme` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `BTC_address` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `email` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for event
@@ -37,19 +25,22 @@ CREATE TABLE `event`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `createrid` int NULL DEFAULT NULL,
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `participantid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `sportid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of event
 -- ----------------------------
-INSERT INTO `event` VALUES (1, 'event1', 1, '2022-10-07 10:44:18', 'Gym', 'user1\'s event', '1,2,3', '6');
-INSERT INTO `event` VALUES (2, 'event2', 2, '2022-10-14 10:44:46', 'Biking', 'user2\'s event', '1,2', '5');
+INSERT INTO `event` VALUES (1, 'event1', 1, '0000-00-00', NULL, 'Gym', 'user1\'s event', '1,2,3', '6');
+INSERT INTO `event` VALUES (2, 'event2', 2, '0000-00-00', NULL, 'Biking', 'user2\'s event', '1,2', '5');
+INSERT INTO `event` VALUES (18, 't', 1, NULL, '06:30:00', '1', '1', '1', '1');
+INSERT INTO `event` VALUES (19, 'test1', 1, '2022-11-09T05:00:00.000Z', '06:30', '1', '1', '1', '2');
 
 -- ----------------------------
 -- Table structure for experience
@@ -62,7 +53,7 @@ CREATE TABLE `experience`  (
   `sportname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `sportlevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of experience
@@ -74,6 +65,7 @@ INSERT INTO `experience` VALUES (4, 5, 5, 'Biking', 'Intermediate');
 INSERT INTO `experience` VALUES (5, 1, 1, 'Basketball', 'Expert');
 INSERT INTO `experience` VALUES (6, 1, 4, 'Football', 'Beginner');
 INSERT INTO `experience` VALUES (7, 1, 6, 'Gym', 'Intermediate');
+INSERT INTO `experience` VALUES (8, 1, 3, 'Jogging', 'Intermediate');
 
 -- ----------------------------
 -- Table structure for sport
@@ -141,10 +133,10 @@ CREATE TABLE `userrelation`  (
 -- ----------------------------
 -- Records of userrelation
 -- ----------------------------
-INSERT INTO `userrelation` VALUES (1, 1, '2,3,4', '', '5');
-INSERT INTO `userrelation` VALUES (2, 2, '1,3', '', '4,5');
-INSERT INTO `userrelation` VALUES (3, 3, '1,2', '', '4,5');
-INSERT INTO `userrelation` VALUES (4, 4, '1', '2,3', '5');
+INSERT INTO `userrelation` VALUES (1, 1, '', '', '5');
+INSERT INTO `userrelation` VALUES (2, 2, '3', '', '4,5');
+INSERT INTO `userrelation` VALUES (3, 3, '2', '', '4,5');
+INSERT INTO `userrelation` VALUES (4, 4, '', '2,3', '5');
 INSERT INTO `userrelation` VALUES (5, 5, '', '1,2,3,4', '');
 
 SET FOREIGN_KEY_CHECKS = 1;
