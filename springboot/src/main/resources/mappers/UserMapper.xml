@@ -85,7 +85,7 @@
             <if test="sport != null and sport != ''">
                 and experience.sportid = #{sport}
             </if>
-            <if test="experience != null and experience != ''">
+            <if test="sport != null and sport != '' and experience != null and experience != ''">
                 and experience.sportlevel = #{experience}
             </if>
                 and NOT FIND_IN_SET(user.id,(SELECT mateid FROM userrelation WHERE userid=#{userId}))

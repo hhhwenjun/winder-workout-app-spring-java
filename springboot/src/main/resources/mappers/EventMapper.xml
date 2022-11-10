@@ -49,6 +49,18 @@
         <if test="sportid != null and sportid != ''">
             and sportid =  #{sportid}
         </if>
+        <if test="date_from != null and date_from != ''">
+            and date &gt;= #{date_from}
+        </if>
+        <if test="date_to != null and date_to != ''">
+        and date &lt;= #{date_to}
+        </if>
+        <if test="time_from != null and time_from != ''">
+        and time &gt;= #{time_from}
+        </if>
+        <if test="time_to != null and time_to != ''">
+        and time &lt;= #{time_to}
+        </if>
         and NOT FIND_IN_SET(#{userid}, participantid)
     </where>
     </select>

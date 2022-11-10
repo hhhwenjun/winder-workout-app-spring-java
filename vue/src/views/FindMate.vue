@@ -12,7 +12,7 @@
                label="Experience">
       <el-option v-for="item in state.level_options" :label="item" :value="item"/>
     </el-select>
-    <el-button style="margin: 10px" type="primary" @click="match">
+    <el-button style="margin: 10px" type="primary" @click="match" round :disabled="buttonEnable">
       <el-icon style="margin-right: 3px">
         <Search/>
       </el-icon>
@@ -23,6 +23,9 @@
   <el-table :data="state.tableData" stripe>
     <el-table-column prop="id" label="id"></el-table-column>
     <el-table-column prop="username" label="username"></el-table-column>
+    <el-table-column prop="sex" label="gender"></el-table-column>
+    <el-table-column prop="age" label="age"></el-table-column>
+    <el-table-column prop="bio" label="bio"></el-table-column>
 
     <el-table-column label="Operations">
       <template #default="scope">
@@ -38,7 +41,7 @@
 
 <script setup>
 import {Search} from '@element-plus/icons-vue'
-import {reactive, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 import request from "../request";
 import {ElNotification} from "element-plus";
 
@@ -59,6 +62,15 @@ const state = reactive({
 // Get the required sport data to show as the options
 request.get('/sport').then(res => {
   state.sport_options = res
+})
+
+const buttonEnable = computed(() =>{
+  if(sex.value!=""||ageLower.value!=""||ageUpper.value!=""||sport.value!=""){
+    return 0
+  }
+  else {
+    return 1
+  }
 })
 
 const match = () => {

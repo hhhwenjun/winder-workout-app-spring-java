@@ -3,6 +3,9 @@
   <el-table :data="state.tableData" stripe>
     <el-table-column prop="id" label="id"></el-table-column>
     <el-table-column prop="username" label="username"></el-table-column>
+    <el-table-column prop="sex" label="gender"></el-table-column>
+    <el-table-column prop="age" label="age"></el-table-column>
+    <el-table-column prop="bio" label="bio"></el-table-column>
 
     <el-table-column label="Operations">
       <template #default="scope">
