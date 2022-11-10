@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 09/11/2022 23:18:21
+ Date: 10/11/2022 11:51:48
 */
 
 SET NAMES utf8mb4;
@@ -38,9 +38,9 @@ CREATE TABLE `event`  (
 -- Records of event
 -- ----------------------------
 INSERT INTO `event` VALUES (1, 'event1', 1, '0000-00-00', NULL, 'Gym', 'user1\'s event', '1,2,3', '6');
-INSERT INTO `event` VALUES (2, 'event2', 2, '0000-00-00', NULL, 'Biking', 'user2\'s event', '1,2', '5');
+INSERT INTO `event` VALUES (2, 'event2', 2, '2022-11-09T05:00:00.000Z', '07:30', 'Biking', 'user2\'s event', '2', '5');
 INSERT INTO `event` VALUES (18, 't', 1, NULL, '06:30:00', '1', '1', '1', '1');
-INSERT INTO `event` VALUES (19, 'test1', 1, '2022-11-09T05:00:00.000Z', '06:30', '1', '1', '1', '2');
+INSERT INTO `event` VALUES (19, 'test1', 1, '2022-11-09T05:00:00.000Z', '07:30', '1', '1', '1', '2');
 
 -- ----------------------------
 -- Table structure for experience
@@ -112,7 +112,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house', '1,4,6', 'I am a college student who want to make more friends with peers. I love sport and want to practice more about my skills.');
 INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL, NULL);
-INSERT INTO `user` VALUES (3, 'user3', '123456', 'bio', 50, 333333, '3@3.com', 'homeless', NULL, NULL);
+INSERT INTO `user` VALUES (3, 'user3', '123456', 'trans', 50, 333333, '3@3.com', 'homeless', NULL, '1111111111111111111111111111111111111111111111111111111111111111111');
 INSERT INTO `user` VALUES (4, 'amber', '123456', 'female', 19, 444444, '4@4.com', '30 stan st', '1,2,3', NULL);
 INSERT INTO `user` VALUES (5, 'lisa', '123456', 'female', 32, 555555, '5@5.com', '21 clemson st', '5', 'A sport lover.');
 
