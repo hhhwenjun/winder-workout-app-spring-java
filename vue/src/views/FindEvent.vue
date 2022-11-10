@@ -52,11 +52,11 @@ import {computed, reactive, ref} from "vue";
 import request from "../request";
 import {ElNotification} from "element-plus";
 
-const sportid = ref('')
-const date_from = ref('')
-const date_to = ref('')
-const time_from = ref('')
-const time_to = ref('')
+const sportid = ref(localStorage.getItem('findevent_sportid')?parseInt(localStorage.getItem('findevent_sportid')):"")
+const date_from = ref(localStorage.getItem('findevent_sportid')?localStorage.getItem('findevent_sportid'):"")
+const date_to = ref(localStorage.getItem('findevent_date_to')?localStorage.getItem('findevent_date_to'):"")
+const time_from = ref(localStorage.getItem('findevent_time_from')?localStorage.getItem('findevent_time_from'):"")
+const time_to = ref(localStorage.getItem('findevent_time_to')?localStorage.getItem('findevent_time_to'):"")
 
 request.get('/sport').then(res => {
   state.sport_options = res
@@ -73,7 +73,7 @@ const formatDate = (row, column)  =>  {
 }
 
 const buttonEnable = computed(() =>{
-  if(sportid.value==""&&date_from.value==""&&date_to.value==""&&time_from.value==""&&time_to.value==""){
+  if(sportid.value===""&&date_from.value===""&&date_to.value===""&&time_from.value===""&&time_to.value===""){
     return 1
   }
   else {
@@ -87,6 +87,11 @@ const state = reactive({
 })
 
 const find = () => {
+  localStorage.setItem('findevent_sportid', sportid.value)
+  localStorage.setItem('findevent_date_from', date_from.value)
+  localStorage.setItem('findevent_date_to', date_to.value)
+  localStorage.setItem('findevent_time_from', time_from.value)
+  localStorage.setItem('findevent_time_to', time_to.value)
   request.get("/event/find", {
     params: {
       userid: localStorage.getItem('userid'),

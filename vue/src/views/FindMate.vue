@@ -46,11 +46,11 @@ import request from "../request";
 import {ElNotification} from "element-plus";
 
 // set up the criteria for search
-const sex = ref('')
-const ageLower = ref('')
-const ageUpper = ref('')
-const sport = ref('')
-const experience = ref('')
+const sex = ref(localStorage.getItem('findmate_sex')?localStorage.getItem('findmate_sex'):"")
+const ageLower = ref(localStorage.getItem('findmate_ageLower')?localStorage.getItem('findmate_ageLower'):"")
+const ageUpper = ref(localStorage.getItem('findmate_ageUpper')?localStorage.getItem('findmate_ageUpper'):"")
+const sport = ref(localStorage.getItem('findmate_sport')?parseInt(localStorage.getItem('findmate_sport')):"")
+const experience = ref(localStorage.getItem('findmate_experience')?localStorage.getItem('findmate_experience'):"")
 
 const state = reactive({
   tableDate: [],
@@ -64,6 +64,8 @@ request.get('/sport').then(res => {
   state.sport_options = res
 })
 
+
+
 const buttonEnable = computed(() =>{
   if(sex.value!=""||ageLower.value!=""||ageUpper.value!=""||sport.value!=""){
     return 0
@@ -74,6 +76,11 @@ const buttonEnable = computed(() =>{
 })
 
 const match = () => {
+  localStorage.setItem('findmate_sex', sex.value)
+  localStorage.setItem('findmate_ageLower', ageLower.value)
+  localStorage.setItem('findmate_ageUpper', ageUpper.value)
+  localStorage.setItem('findmate_sport', sport.value)
+  localStorage.setItem('findmate_experience', experience.value)
   request.get("/user/match", {
     params: {
       userId: localStorage.getItem('userid'),
