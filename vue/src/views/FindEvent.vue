@@ -1,23 +1,23 @@
 <template>
   <div style="margin-bottom: 20px">
-    <el-date-picker
+    <el-date-picker style="width: 200px; margin: 10px"
         v-model="date_from"
         type="date"
         placeholder="Date from"
     />
-    <el-date-picker
+    <el-date-picker style="width: 200px; margin: 10px"
         v-model="date_to"
         type="date"
         placeholder="Date to"
     />
-    <el-time-select
+    <el-time-select style="width: 200px; margin: 10px"
         v-model="time_from"
         start="06:00"
         step="00:30"
         end="21:00"
         placeholder="Time from"
     />
-    <el-time-select
+    <el-time-select style="width: 200px; margin: 10px"
         v-model="time_to"
         start="06:00"
         step="00:30"
