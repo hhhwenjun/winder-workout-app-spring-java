@@ -13,14 +13,14 @@
         </el-form-item>
         <el-form-item prop="date">
           <el-date-picker
-              v-model="date"
+              v-model="event.date"
               type="date"
               placeholder="Pick a day"
           />
         </el-form-item>
-        <el-form-item prop="date">
+        <el-form-item prop="time">
           <el-time-select
-              v-model="hour"
+              v-model="event.time"
               start="06:00"
               step="00:30"
               end="21:00"
@@ -50,9 +50,6 @@ import router from "../router";
 
 const {proxy} = getCurrentInstance()
 
-const date = ref(new Date())
-const hour = ref('')
-
 const rules = reactive({
   name: [
     {required: true, message: 'Please enter name', trigger: 'blur'}
@@ -69,7 +66,8 @@ request.get('/sport').then(res => {
 const event = reactive({
   name: "",
   createrid: localStorage.getItem("userid"),
-  time: date.toString() + hour.value,
+  date:"",
+  time:"",
   location: "",
   description: "",
   participantid: localStorage.getItem("userid"),
@@ -78,6 +76,7 @@ const event = reactive({
 
 
 const submit = () => {
+  console.log(event)
   proxy.$refs.ruleFormRef.validate((valid) => {
     if (valid) {
       request.post('/event/create', event).then(res => {

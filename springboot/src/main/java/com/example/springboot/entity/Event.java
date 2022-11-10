@@ -2,6 +2,9 @@ package com.example.springboot.entity;
 
 import lombok.Data;
 
+import java.sql.Date;
+import java.sql.Time;
+
 @Data
 public class Event {
 
@@ -9,6 +12,7 @@ public class Event {
     private String name;
     private Integer createrid;
 
+    private String date;
     private String time;
     private String location;
     private String description;

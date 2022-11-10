@@ -16,8 +16,21 @@
             <el-form-item prop="name">
               <el-input v-model="state.event.name" placeholder="Name" />
             </el-form-item>
+            <el-form-item prop="date">
+              <el-date-picker
+                  v-model="state.event.date"
+                  type="date"
+                  placeholder="Pick a day"
+              />
+            </el-form-item>
             <el-form-item prop="time">
-              <el-input v-model="state.event.time" placeholder="Time"  />
+              <el-time-select
+                  v-model="state.event.time"
+                  start="06:00"
+                  step="00:30"
+                  end="21:00"
+                  placeholder="Select time"
+              />
             </el-form-item>
             <el-form-item prop="location">
               <el-input v-model="state.event.location" placeholder="Location" />
@@ -58,6 +71,7 @@ const state = reactive({
   event:{
     name:"",
     createrid:"",
+    date:"",
     time:"",
     location:"",
     description:"",
