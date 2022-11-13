@@ -7,24 +7,24 @@
           <el-input v-model="event.name" placeholder="Event Name"/>
         </el-form-item>
         <el-form-item prop="sport">
-          <el-select v-model="event.sportid" placeholder="Sport" clearable label="Sport">
+          <el-select style="width: 200px" v-model="event.sportid" placeholder="Sport" clearable label="Sport">
             <el-option v-for="item in rules.sport_options" :label="item.sportname" :value="item.id"/>
           </el-select>
         </el-form-item>
         <el-form-item prop="date">
-          <el-date-picker
-              v-model="event.date"
-              type="date"
-              placeholder="Pick a day"
+          <el-date-picker style="width: 200px"
+                          v-model="event.date"
+                          type="date"
+                          placeholder="Pick a day"
           />
         </el-form-item>
         <el-form-item prop="time">
-          <el-time-select
-              v-model="event.time"
-              start="06:00"
-              step="00:30"
-              end="21:00"
-              placeholder="Select time"
+          <el-time-select style="width: 200px"
+                          v-model="event.time"
+                          start="06:00"
+                          step="00:30"
+                          end="21:00"
+                          placeholder="Select time"
           />
         </el-form-item>
         <el-form-item prop="location">
@@ -66,8 +66,8 @@ request.get('/sport').then(res => {
 const event = reactive({
   name: "",
   createrid: localStorage.getItem("userid"),
-  date:"",
-  time:"",
+  date: "",
+  time: "",
   location: "",
   description: "",
   participantid: localStorage.getItem("userid"),
