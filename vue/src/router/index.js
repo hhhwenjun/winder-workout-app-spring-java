@@ -5,11 +5,16 @@ const routes = [
     path: '/',
     name: 'Manage',
     component: () => import('../views/Manage.vue'),
-    children: [
+    children:[
+      // {
+      //   path: '',
+      //   name: 'Home',
+      //   component: () => import('../views/Home.vue')
+      // },
       {
-        path: '',
-        name: 'Home',
-        component: () => import('../views/Home.vue')
+        path: '/mywinder',
+        name: 'MyWinder',
+        component: () => import('../views/Home_wenjun.vue')
       },
       {
         path: '/profileedit',
@@ -71,6 +76,21 @@ const routes = [
         name: 'YourEventJoined',
         component: () => import('../views/YourEventJoined.vue')
       },
+      {
+        path: '/profile',
+        name: 'Profile',
+        component: () => import('../views/Profile.vue')
+      },
+      {
+        path: '/findworkoutpartner',
+        name: 'FindWorkoutPartner',
+        component: () => import('../views/FindWorkoutPartner.vue')
+      },
+      {
+        path: '/findgroupactivity',
+        name: 'FindGroupActivity',
+        component: () => import('../views/FindGroupActivity.vue')
+      },
     ]
   },
   {
@@ -83,6 +103,16 @@ const routes = [
     name: 'Register',
     component: () => import('../views/Register.vue')
   },
+  {
+    path: '',
+    name: 'Home',
+    component: () => import('../views/Home.vue')
+  },
+  // {
+  //   path: '/profileedit',
+  //   name: 'ProfileEdit',
+  //   component: () => import('../views/ProfileEdit.vue')
+  // },
 ]
 
 const router = createRouter({
@@ -90,7 +120,4 @@ const router = createRouter({
   routes: routes,
 })
 
-/**
- * 输出对象
- */
 export default router;

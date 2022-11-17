@@ -4,10 +4,10 @@
       <h1 style="text-align: center; margin-bottom: 30px">Account</h1>
       <el-form :model="user" :rules="rules" ref="ruleFormRef" size="large">
         <el-form-item prop="username">
-          <el-input v-model="user.username" :prefix-icon="User"/>
+          <el-input v-model="user.username" :prefix-icon="User" />
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="user.password" :prefix-icon="Lock" show-password/>
+          <el-input v-model="user.password" :prefix-icon="Lock" show-password  />
         </el-form-item>
         <h2>Information</h2>
         <el-form-item prop="sex">
