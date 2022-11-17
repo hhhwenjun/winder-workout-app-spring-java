@@ -6,4 +6,8 @@ import lombok.Data;
 public class EventQueryDTO {
     private Integer userid;
     private Integer sportid;
+    private String date_from;
+    private String date_to;
+    private String time_from;
+    private String time_to;
 }

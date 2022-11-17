@@ -8,5 +8,7 @@ public class UserQueryDTO {
     private String sex;
     private Integer ageLower;
     private Integer ageUpper;
+    private String sport;
+    private String experience;
 
 }

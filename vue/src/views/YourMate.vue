@@ -54,8 +54,40 @@ const deleteMate = (index) => {
       if (res.code === '200') {
         ElNotification({
           type: 'success',
-          message: 'Delete Success'
+          message: 'Delete Successful'
         })
+        location.reload()
+      } else {
+        ElNotification({
+          type: 'error',
+          message: res.msg
+        })
+      }
+    })
+  })
+
+  request.get('/userrelation/relation/'+state.tableData[index].id).then(res => {
+    let userRelation = res
+
+    let listofMate = userRelation.mateid.split(",")
+    let newMateId = ""
+
+
+    for(var i =0;i<listofMate.length;i++){
+      if(listofMate[i]!==String(localStorage.getItem("userid"))){
+        newMateId += listofMate[i]
+        newMateId += ","
+      }
+    }
+
+    if (newMateId!=""){
+      newMateId = newMateId.substring(0,newMateId.length-1)
+    }
+
+    userRelation.mateid = newMateId
+
+    request.post('/userrelation/update', userRelation).then(res => {
+      if (res.code === '200') {
         location.reload()
       } else {
         ElNotification({

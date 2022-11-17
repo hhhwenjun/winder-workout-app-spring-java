@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.springboot.dao.UserRelationDao">
     <insert id="insert">
-        INSERT INTO `userrelation`(userid, mateid) values(#{userid},  #{mateid});
+        INSERT INTO `userrelation`(userid, mateid, likeid, maylikeid) values(#{userid},  #{mateid},  #{likeid},  #{maylikeid});
     </insert>
 
     <update id="update">
@@ -14,7 +14,9 @@
             <if test="userid != null and userid != ''">
                 userid = #{userid},
             </if>
-                mateid = #{mateid},
+            mateid = #{mateid},
+            likeid = #{likeid},
+            maylikeid = #{maylikeid}
         </set>
         where id = #{id}
     </update>
@@ -25,5 +27,13 @@
 
     <select id="getMate" resultType="com.example.springboot.entity.User">
         SELECT * FROM user WHERE FIND_IN_SET(id,(SELECT mateid FROM userrelation WHERE userId=#{userid}))
+    </select>
+
+    <select id="getYouLike" resultType="com.example.springboot.entity.User">
+        SELECT * FROM user WHERE FIND_IN_SET(id,(SELECT likeid FROM userrelation WHERE userId=#{userid}))
+    </select>
+
+    <select id="getYouMayLike" resultType="com.example.springboot.entity.User">
+        SELECT * FROM user WHERE FIND_IN_SET(id,(SELECT maylikeid FROM userrelation WHERE userId=#{userid}))
     </select>
 </mapper>

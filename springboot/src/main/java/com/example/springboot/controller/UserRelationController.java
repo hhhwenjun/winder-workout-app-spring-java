@@ -2,17 +2,12 @@ package com.example.springboot.controller;
 
 import com.example.springboot.common.Result;
 import com.example.springboot.dao.UserRelationDao;
-import com.example.springboot.entity.Event;
 import com.example.springboot.entity.User;
 import com.example.springboot.entity.UserRelation;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/userrelation")
@@ -20,9 +15,22 @@ public class UserRelationController {
     @Autowired
     private UserRelationDao userRelationDao;
 
+    // Get mates you have
     @GetMapping("/mate/{userid}")
     public List<User> getMate(@PathVariable Integer userid){
         return userRelationDao.getMate(userid);
+    }
+
+    // Get people who you like
+    @GetMapping("/like/{userid}")
+    public List<User> getYouLike(@PathVariable Integer userid){
+        return userRelationDao.getYouLike(userid);
+    }
+
+    // Get people who like you, you can click "like" then you become mate
+    @GetMapping("/may-like/{userid}")
+    public List<User> getYouMayLike(@PathVariable Integer userid){
+        return userRelationDao.getYouMayLike(userid);
     }
 
     @GetMapping("/relation/{userid}")
