@@ -10,4 +10,6 @@ public class EventQueryDTO {
     private String date_to;
     private String time_from;
     private String time_to;
+    private Integer capacity_from;
+    private Integer capacity_to;
 }

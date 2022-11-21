@@ -18,4 +18,5 @@ public class Event {
     private String description;
     private String participantid;
     private Integer sportid;
+    private Integer capacity;
 }

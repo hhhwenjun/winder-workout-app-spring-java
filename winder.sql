@@ -31,16 +31,21 @@ CREATE TABLE `event`  (
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `participantid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `sportid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `capacity` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of event
 -- ----------------------------
-INSERT INTO `event` VALUES (1, 'event1', 1, '0000-00-00', NULL, 'Gym', 'user1\'s event', '1,2,3', '6');
-INSERT INTO `event` VALUES (2, 'event2', 2, '2022-11-09T05:00:00.000Z', '07:30', 'Biking', 'user2\'s event', '2', '5');
-INSERT INTO `event` VALUES (18, 't', 1, NULL, '06:30:00', '1', '1', '1', '1');
-INSERT INTO `event` VALUES (19, 'test1', 1, '2022-11-09T05:00:00.000Z', '07:30', '1', '1', '1', '2');
+INSERT INTO `event` VALUES (1, 'event1', 1, '2022-11-09T05:00:00.000Z', '09:30', 'Downtown Gym', 'user1\'s event', '1,2,3', '6', 10);
+INSERT INTO `event` VALUES (2, 'event2', 2, '2022-11-09T05:00:00.000Z', '07:30', 'Bike Camp 11', 'user2\'s event', '2', '5', 5);
+INSERT INTO `event` VALUES (3, 'Swimming Event', 1, '2022-11-01T05:00:00.000Z', '06:30', 'Center Swimming Pool', '1', '1', '1', 100);
+INSERT INTO `event` VALUES (4, 'test1', 1, '2022-11-09T05:00:00.000Z', '07:30', '1', '1', '1', '2', 23);
+INSERT INTO `event` VALUES (5, 'Sunday Girl Basketball', 3, '2022-12-10T05:00:00.000Z', '09:30', '30 Apple St', 'Every girl should come', '3, 4', '1', 50);
+INSERT INTO `event` VALUES (6, 'College Football Open Day', 2, '2022-11-01T05:00:00.000Z', '06:30', 'Lane Stadium', 'Open Day, everyone welcome', '2, 3', '4', 500);
+INSERT INTO `event` VALUES (7, 'Biking with Amber', 4, '2022-11-28T05:00:00.000Z', '12:30', '103 Fall Lane Avenue', 'Amber find a biking mate', '4', '5', 2);
+INSERT INTO `event` VALUES (8, 'Free Tour in Lee\'s Gym', 5, '2022-12-11T05:00:00.000Z', '09:30', 'Downtown Lee\'s Gym', 'Free tour in newly open gym, free 3 days trial', '3, 5', '6', 100);
 
 -- ----------------------------
 -- Table structure for experience
@@ -110,11 +115,11 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'user1', '123456', 'male', 22, 111111, '1@1.com', 'house', '1,4,6', 'I am a college student who want to make more friends with peers. I love sport and want to practice more about my skills.');
-INSERT INTO `user` VALUES (2, 'user2', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL, NULL);
-INSERT INTO `user` VALUES (3, 'user3', '123456', 'trans', 50, 333333, '3@3.com', 'homeless', NULL, '1111111111111111111111111111111111111111111111111111111111111111111');
-INSERT INTO `user` VALUES (4, 'amber', '123456', 'female', 19, 444444, '4@4.com', '30 stan st', '1,2,3', NULL);
-INSERT INTO `user` VALUES (5, 'lisa', '123456', 'female', 32, 555555, '5@5.com', '21 clemson st', '5', 'A sport lover.');
+INSERT INTO `user` VALUES (1, 'Mandy', '123456', 'male', 22, 111111, '1@1.com', 'house', '1,4,6', 'I am a college student who want to make more friends with peers. I love sport and want to practice more about my skills.');
+INSERT INTO `user` VALUES (2, 'Lily', '123456', 'female', 20, 222222, '2@2.com', 'flat', NULL, NULL);
+INSERT INTO `user` VALUES (3, 'John', '123456', 'male', 50, 333333, '3@3.com', '310 cartman st', NULL, 'Actively finding sport mate with me.');
+INSERT INTO `user` VALUES (4, 'Amber', '123456', 'female', 19, 444444, '4@4.com', '30 stan st', '1,2,3', NULL);
+INSERT INTO `user` VALUES (5, 'Lisa', '123456', 'female', 32, 555555, '5@5.com', '21 clemson st', '5', 'A sport lover.');
 
 -- ----------------------------
 -- Table structure for userrelation

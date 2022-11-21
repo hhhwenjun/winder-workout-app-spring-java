@@ -33,6 +33,11 @@
         <el-form-item prop="description">
           <el-input v-model="event.description" placeholder="Brief Description"/>
         </el-form-item>
+        <el-form-item prop="capacity">
+          <el-select style="width: 200px" v-model="event.capacity" placeholder="Estimated Capacity" clearable label="Capacity">
+            <el-option v-for="item in rules.capacity_options" :label="item" :value="item"/>
+          </el-select>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%" @click="submit">Submit</el-button>
         </el-form-item>
@@ -54,7 +59,8 @@ const rules = reactive({
   name: [
     {required: true, message: 'Please enter name', trigger: 'blur'}
   ],
-  sport_options: []
+  sport_options: [],
+  capacity_options: [2, 3, 5, 10, 20, 30, 50, 70, 100, 200, 500]
 })
 
 const state = reactive({})
@@ -71,7 +77,8 @@ const event = reactive({
   location: "",
   description: "",
   participantid: localStorage.getItem("userid"),
-  sportid: ""
+  sportid: "",
+  capacity: ""
 })
 
 

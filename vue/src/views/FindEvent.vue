@@ -27,6 +27,12 @@
     <el-select style="width: 200px; margin: 10px" v-model="sportid" placeholder="Sport" clearable label="Sport">
       <el-option v-for="item in state.sport_options" :label="item.sportname" :value="item.id"/>
     </el-select>
+    <el-select style="width: 200px; margin: 10px" v-model="capacity_from" placeholder="Min Capacity" clearable label="Min Capacity">
+      <el-option v-for="item in capacity_options" :label="item" :value="item"/>
+    </el-select>
+    <el-select style="width: 200px; margin: 10px" v-model="capacity_to" placeholder="Max Capacity" clearable label="Max Capacity">
+      <el-option v-for="item in capacity_options" :label="item" :value="item"/>
+    </el-select>
     <el-button type="primary" @click="find"  round :disabled="buttonEnable"><el-icon style="margin-right: 3px"><Search /></el-icon> Find</el-button>
   </div>
 
@@ -57,6 +63,9 @@ const date_from = ref(localStorage.getItem('findevent_sportid')?localStorage.get
 const date_to = ref(localStorage.getItem('findevent_date_to')?localStorage.getItem('findevent_date_to'):"")
 const time_from = ref(localStorage.getItem('findevent_time_from')?localStorage.getItem('findevent_time_from'):"")
 const time_to = ref(localStorage.getItem('findevent_time_to')?localStorage.getItem('findevent_time_to'):"")
+const capacity_from = ref(localStorage.getItem('findevent_capacity_from')?localStorage.getItem('findevent_capacity_from'):"")
+const capacity_to = ref(localStorage.getItem('findevent_capacity_to')?localStorage.getItem('findevent_capacity_to'):"")
+const capacity_options = [2, 3, 5, 10, 20, 30, 50, 70, 100, 200, 500]
 
 request.get('/sport').then(res => {
   state.sport_options = res
@@ -92,6 +101,8 @@ const find = () => {
   localStorage.setItem('findevent_date_to', date_to.value)
   localStorage.setItem('findevent_time_from', time_from.value)
   localStorage.setItem('findevent_time_to', time_to.value)
+  localStorage.setItem('findevent_capacity_from', capacity_from.value)
+  localStorage.setItem('findevent_capacity_to', capacity_to.value)
   request.get("/event/find", {
     params: {
       userid: localStorage.getItem('userid'),
@@ -100,6 +111,8 @@ const find = () => {
       date_to: date_to.value,
       time_from: time_from.value,
       time_to: time_to.value,
+      capacity_from: capacity_from.value,
+      capacity_to: capacity_to.value
     }
   })
       .then(res => {
