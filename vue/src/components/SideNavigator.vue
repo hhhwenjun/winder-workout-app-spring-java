@@ -14,11 +14,6 @@
           <el-menu-item index="/youlike">Your Like</el-menu-item>
           <el-menu-item index="/likeyou">Like You</el-menu-item>
           <el-menu-item index="/yourmate">Your mate</el-menu-item>
-        <el-sub-menu index="2-1">
-          <template #title>Message</template>
-          <el-menu-item index="/messagesent">Message sent</el-menu-item>
-          <el-menu-item index="/messagereceived">Message received</el-menu-item>
-        </el-sub-menu>
       </el-sub-menu>
       <el-sub-menu index="3">
         <template #title>

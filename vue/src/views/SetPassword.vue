@@ -9,6 +9,9 @@
         <el-form-item prop="password">
           <el-input v-model="state.user.password" :prefix-icon="Lock" show-password  />
         </el-form-item>
+        <el-form-item>
+          <el-button type="primary" style="width: 100%" @click="profileedit">Finish</el-button>
+        </el-form-item>
       </el-form>
     </div>
   </div>
