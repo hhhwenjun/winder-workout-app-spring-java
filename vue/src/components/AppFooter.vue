@@ -54,7 +54,8 @@ footer {
   justify-content: center;
   text-align: center;
   font-family: Monda;
-  gap: 0;
+  font-size: 20px;
+  gap: 6px;
   padding: 0.25rem;
 }
 

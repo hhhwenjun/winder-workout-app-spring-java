@@ -7,66 +7,91 @@
           {{ anime.title }}
         </h2>
         <p>
-          {{ anime.age }}, {{ anime.description }}
+          {{ anime.age }}, {{ anime.gender }}
         </p>
-        <p>
-          {{ anime.address }}
+        <p style="line-break: strict">
+          {{ anime.bio }}
         </p>
       </div>
-
     </section>
     <section class="activity-info-panel">
-      <div class="activity-info-panel-act" v-for="item in getUserActivity(anime.id, userData)" :key="item.id">
-        <div v-for="(value, index) in item" :key="index">
-          <p>{{index}}: {{value}}</p>
-        </div>
-      </div>
+<!--      <div class="activity-info-panel-act" v-for="item in getUserActivity(anime.id, userJson)" :key="item.id">-->
+<!--        <div v-for="(value, index) in item" :key="index">-->
+<!--          <p>{{index}}: {{value}}</p>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="activity-info-panel-but">
-        <button><font-awesome-icon icon="fa-brands fa-gratipay" size="7x"/></button>
+        <button @click="add(anime)" :disabled="likeDisable" :class=
+            "{activeLike: !likeDisable, disableLike: likeDisable}">
+          <font-awesome-icon icon="fa-brands fa-gratipay" size="7x"/>
+        </button>
       </div>
     </section>
-
   </section>
 </template>
 
-<script>
+<script setup>
+import {defineProps, defineEmits, computed, ref} from 'vue'
 import userJson from "./db.json";
-export default {
-  props: ["anime"],
-  name: "PostPartner",
-  data() {
-    return {
-      userData: userJson.users
-    }
-  },
-  methods: {
-    getImg(url) {
-      let filename = "../assets/userPhotos/" + url.toLowerCase();
-      return new URL(filename, import.meta.url).href;
-    },
-    getUserActivity(userID, userData){
-      let userActivity = [];
-      for(let i = 0; i < userData.length; i++){
-        if(userData[i]["userID"] === userID ){
-          userActivity.push(userData[i]["activities"]);
-          break;
-        }
-      }
-      return userActivity;
-    }
-  }
-}
-// const imgUrl = new URL('./img.png', import.meta.url).href
-// const user_activities = {
-//   user_title: "user1",
-//   user_activities: {Tennis: Beginner, Soccer: Intermediate},
+import request from "../request.js";
+import {ElNotification} from "element-plus";
+const props = defineProps({
+  anime: []
+});
+
+const getImg = (url) => {
+  let filename = "../assets/userPhotos/" + url.toLowerCase();
+  return new URL(filename, import.meta.url).href;
+};
+
+// const getUserActivity = (userID, userData) => {
+//   let userActivity = [];
+//   for(let i = 0; i < userData.length; i++){
+//     if(userData[i]["userID"] === userID ){
+//       userActivity.push(userData[i]["activities"]);
+//       break;
+//     }
+//   }
+//   return userActivity;
 // }
+
+let likeDisable = ref(0)
+const add = (anime) => {
+  request.get('/userrelation/relation/' + localStorage.getItem("userid")).then(res => {
+    let userRelation = res
+    if (userRelation.likeid == null) userRelation.likeid = ""
+
+    if (userRelation.likeid.length > 0) {
+      userRelation.likeid += ","
+      userRelation.likeid += anime.id
+    } else {
+      userRelation.likeid += anime.id
+    }
+
+    request.post('/userrelation/update', userRelation).then(res => {
+      if (res.code === '200') {
+        ElNotification({
+          type: 'success',
+          message: 'Like Successful'
+        })
+        // match()
+      } else {
+        ElNotification({
+          type: 'error',
+          message: res.msg
+        })
+      }
+    })
+  })
+  likeDisable.value = 1
+}
+
 
 </script>
 
 <style scoped>
 p {
-  font-size: 22px;
+  font-size: 20px;
 }
 .all-boxes {
   display: flex;
@@ -81,7 +106,7 @@ p {
   color: #EF5B5B;
   /*color: rgba(251, 206, 59, 1);*/
   margin-bottom: 20px;
-  width: 500px;
+  width: 450px;
   text-align: left;
 }
 
@@ -89,11 +114,12 @@ p {
   position: relative;
   width: 250px;
   align-items: start;
+  /*border: black 2px solid;*/
 }
 
 .user-info-panel img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   padding: 4px;
   border-radius: 50%;
   border: whitesmoke 2px solid;
@@ -102,12 +128,14 @@ p {
 
 .user-info-panel-inf {
   min-height: 120px;
+  max-width: 200px;
 }
 
 .activity-info-panel {
   position: relative;
-  width: 250px;
+  width: 200px;
   align-items: start;
+  /*border: black 2px solid;*/
 }
 
 .activity-info-panel-act {
@@ -128,10 +156,19 @@ p {
   border-radius: 50%;
   text-align: center;
   border: none;
-  background: #2c3e50;
+  /*background: #2c3e50;*/
 }
 
 .activity-info-panel button:hover {
   background: whitesmoke;
+}
+
+.activeLike {
+  background: #2c3e50;
+}
+
+.disableLike {
+  background: whitesmoke;
+  /*background: rgba(251, 206, 59, 1);*/
 }
 </style>

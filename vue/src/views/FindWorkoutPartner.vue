@@ -19,7 +19,7 @@
 <script>
 import PostPartner from "./PostPartner.vue";
 import { Search } from '@element-plus/icons-vue'
-import {reactive, ref} from "vue";
+import {reactive, ref, toRaw} from "vue";
 import request from "../request";
 import {ElNotification} from "element-plus";
 import { getCurrentInstance } from 'vue';
@@ -54,8 +54,7 @@ export default {
         }
       })
           .then(res => {
-            state.tableData = res;
-            // this.getAnime();
+            state.tableData = res
             this.$forceUpdate()
           })
     },
@@ -146,28 +145,11 @@ export default {
         1010,
       ];
       const anime = [];
-      // for (let i = 0; i < anime_titles.length; i++) {
-      //   // let userIndex = Math.floor(Math.random() * anime.title.length);
-      //   anime.push({
-      //     imgScr: anime_imgSrc[i],
-      //     title: anime_titles[i],
-      //     age: anime_ages[i],
-      //     description:
-      //         "Student",
-      //     address: anime_address[i],
-      //     id: anime_ids[i]
-      //   });
-      // }
-
-      // const anime = [];
-      // this.match();
+      this.match();
       if (state.tableData) {
-        this.match()
-      for (let i = 0; i < 3; i++ ) {
-
+        let i = 0;
+        for(let obj in state.tableData) {
           anime.push({
-            // title: state.tableData[i].id,
-            // description: state.tableData[i].username
             imgScr: anime_imgSrc[i],
             title: state.tableData[i].username,
             age: state.tableData[i].age,
@@ -175,9 +157,14 @@ export default {
             address: state.tableData[i].address,
             id: state.tableData[i].id
           })
+          i++
+          console.log(i)
         }
-      }
 
+      // for (let i = 0; i < state.tableData.data.length; i++ ) {
+      //
+      //   }
+      }
       return anime;
     },
     handleScroll() {
@@ -217,7 +204,6 @@ export default {
         })
       })
     }
-
   },
   mounted() {
     this.anime_list = this.getAnime();
