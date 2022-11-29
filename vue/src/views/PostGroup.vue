@@ -43,6 +43,7 @@ const props = defineProps({
   anime: []
 });
 
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   // Then specify how you want your dates to be formatted
@@ -51,7 +52,7 @@ function formatDate(dateString) {
 
 function numOfParticipants(participants) {
   let par_string = participants.split(',')
-  console.log(par_string)
+  // console.log(par_string)
   return par_string.length.toString()
 }
 
@@ -120,7 +121,7 @@ p {
 
 .sport-logo {
   color: black;
-  background-color: whitesmoke;
+  /*background-color: whitesmoke;*/
   border-radius: 30px;
   margin-top: 15px;
   /*outline: 2px solid black;*/

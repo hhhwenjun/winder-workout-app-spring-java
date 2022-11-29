@@ -67,7 +67,6 @@ request.get('/sport').then(res => {
   state.sport_options = res
 })
 
-
 const formatDate = (row, column)  =>  {
   let data = row[column.property]
   if(data == null) {
@@ -86,10 +85,12 @@ const buttonEnable = computed(() =>{
   }
 })
 
-
 const state = reactive({
-  tableDate: []
+  tableDate: [],
+  // userNameTable: []
 })
+
+
 
 const find = () => {
   localStorage.setItem('findevent_sportid', sportid.value)
@@ -109,7 +110,7 @@ const find = () => {
   })
       .then(res => {
         state.tableData = res
-        console.log(res)
+        // console.log(res)
       })
 }
 
@@ -118,6 +119,17 @@ const anime_list = computed(() =>{
   if (state.tableData) {
     let i = 0;
     for(let obj in state.tableData) {
+      console.log(state.tableData[i].createrid)
+      let userInfo = reactive({
+        userName: []
+      })
+      request.get('/user/userid/' + state.tableData[i].createrid).then(res => {
+        userInfo.userName.push(res.username)
+        // state.userNameTable.push({userInfo:res})
+      })
+      console.log(userInfo.userName)
+
+
       anime.push({
         title: state.tableData[i].name,
         date: state.tableData[i].date,
@@ -127,7 +139,7 @@ const anime_list = computed(() =>{
         sport: state.tableData[i].sportid,
         id: state.tableData[i].id,
         description: state.tableData[i].description,
-        createdBy: state.tableData[i].createrid
+        createdBy: userInfo.userName,
       })
       i++
     }
