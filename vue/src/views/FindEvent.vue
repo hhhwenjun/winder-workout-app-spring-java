@@ -34,7 +34,6 @@
       <el-option v-for="item in capacity_options" :label="item" :value="item"/>
     </el-select>
     <el-button style="margin: 10px; width: 200px; float: right" type="primary" @click="find"  round :disabled="buttonEnable"><el-icon style="margin-right: 3px"><Search /></el-icon> Find</el-button>
-
   </div>
 
 <!--  <el-table :data="state.tableData" stripe>-->
