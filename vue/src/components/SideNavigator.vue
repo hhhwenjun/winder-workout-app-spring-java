@@ -1,11 +1,11 @@
 <template>
   <el-scrollbar>
     <el-menu :default-openeds="['2', '3']" router>
-      <el-menu-item index="/" >
-        <template #title>
-          <el-icon><house /></el-icon>Home
-        </template>
-      </el-menu-item>
+<!--      <el-menu-item index="/" >-->
+<!--        <template #title>-->
+<!--          <el-icon><house /></el-icon>Home-->
+<!--        </template>-->
+<!--      </el-menu-item>-->
       <el-sub-menu index="2">
         <template #title>
           <el-icon><message /></el-icon>Mate
@@ -31,10 +31,8 @@
         <template #title>
           <el-icon><setting /></el-icon>Account
         </template>
-        <el-menu-item-group>
           <el-menu-item index="/setpassword">Set password</el-menu-item>
           <el-menu-item index="/profileedit">Profile</el-menu-item>
-        </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
   </el-scrollbar>
@@ -47,5 +45,11 @@ import { Menu as IconMenu, Message, Setting, House } from '@element-plus/icons-v
 </script>
 
 <style scoped>
+.el-sub-menu{
+  background-color: #c8dfff;
+}
+.el-menu-item{
+  background-color: #f5f5f5;
+}
 
 </style>
