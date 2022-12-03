@@ -41,10 +41,4 @@ const to_profile = () => {
   justify-content: center;
   height: 100%;
 }
-
-.el-icon{
-  color: white;
-}
-
-
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="width: 450px; margin: 75px auto;">
+    <div style="width: 400px; margin: 200px auto;">
       <h1 style="text-align: center; margin-bottom: 30px">Winder</h1>
       <el-form :model="user" :rules="rules" ref="ruleFormRef" size="large">
         <el-form-item prop="username">
@@ -14,9 +14,9 @@
         </el-form-item>
       </el-form>
     </div>
-    <div style="width: 450px; margin: 100px auto;">
-      <h1 style="margin-bottom: 30px">Or create an Winder account</h1>
-      <el-button type="primary" style="width: 100%;" @click="register">Register now</el-button>
+    <div>
+      <h1>Or haven't register already?</h1>
+      <el-button type="primary" style="width: 200px" @click="register">Register now</el-button>
     </div>
   </div>
 </template>
@@ -55,7 +55,7 @@ const login = () => {
           request.get("/user/username/"+user.username).then(res => {
             localStorage.setItem('userid', res.id)
             localStorage.setItem('username', res.username)
-            router.push('/mywinder')
+            router.push('/')
             location.reload()
           })
         } else {
@@ -79,7 +79,7 @@ const register = () =>{
 }
 
 if(localStorage.getItem("username")!=null){
-  router.push('/mywinder')
+  router.push('/')
 }
 </script>
 

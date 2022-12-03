@@ -33,35 +33,30 @@
     <el-select style="width: 200px; margin: 10px" v-model="capacity_to" placeholder="Max Capacity" clearable label="Max Capacity">
       <el-option v-for="item in capacity_options" :label="item" :value="item"/>
     </el-select>
-    <el-button style="margin: 10px; width: 200px; float: right" type="primary" @click="find"  round :disabled="buttonEnable"><el-icon style="margin-right: 3px"><Search /></el-icon> Find</el-button>
+    <el-button type="primary" @click="find"  round :disabled="buttonEnable"><el-icon style="margin-right: 3px"><Search /></el-icon> Find</el-button>
   </div>
 
-<!--  <el-table :data="state.tableData" stripe>-->
-<!--    <el-table-column prop="id" label="id"></el-table-column>-->
-<!--    <el-table-column prop="name" label="name"></el-table-column>-->
-<!--    <el-table-column prop="date" label="date" :formatter="formatDate"></el-table-column>-->
-<!--    <el-table-column prop="time" label="time"></el-table-column>-->
+  <el-table :data="state.tableData" stripe>
+    <el-table-column prop="id" label="id"></el-table-column>
+    <el-table-column prop="name" label="name"></el-table-column>
+    <el-table-column prop="date" label="date" :formatter="formatDate"></el-table-column>
+    <el-table-column prop="time" label="time"></el-table-column>
 
-<!--    <el-table-column label="Operations">-->
-<!--      <template #default="scope">-->
-<!--        <el-button text @click="add(scope.$index)"-->
-<!--        >Add</el-button-->
-<!--        >-->
-<!--      </template>-->
-<!--    </el-table-column>-->
-<!--  </el-table>-->
-  <div class="main-user-info">
-    <PostGroup v-for="(anime, i) in anime_list" :key="i" :anime="anime"/>
-  </div>
+    <el-table-column label="Operations">
+      <template #default="scope">
+        <el-button text @click="add(scope.$index)"
+        >Add</el-button
+        >
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
-
 
 <script setup>
 import { Search } from '@element-plus/icons-vue'
 import {computed, reactive, ref} from "vue";
 import request from "../request";
 import {ElNotification} from "element-plus";
-import PostGroup from "./PostGroup.vue";
 
 const sportid = ref(localStorage.getItem('findevent_sportid')?parseInt(localStorage.getItem('findevent_sportid')):"")
 const date_from = ref(localStorage.getItem('findevent_sportid')?localStorage.getItem('findevent_sportid'):"")
@@ -75,6 +70,7 @@ const capacity_options = [2, 3, 5, 10, 20, 30, 50, 70, 100, 200, 500]
 request.get('/sport').then(res => {
   state.sport_options = res
 })
+
 
 const formatDate = (row, column)  =>  {
   let data = row[column.property]
@@ -94,12 +90,10 @@ const buttonEnable = computed(() =>{
   }
 })
 
+
 const state = reactive({
-  tableDate: [],
-  // userNameTable: []
+  tableDate: []
 })
-
-
 
 const find = () => {
   localStorage.setItem('findevent_sportid', sportid.value)
@@ -123,76 +117,38 @@ const find = () => {
   })
       .then(res => {
         state.tableData = res
-        // console.log(res)
       })
 }
 
-const anime_list = computed(() =>{
-  const anime = [];
-  if (state.tableData) {
-    let i = 0;
-    for(let obj in state.tableData) {
-      console.log(state.tableData[i].createrid)
-      let userInfo = reactive({
-        userName: []
-      })
-      request.get('/user/userid/' + state.tableData[i].createrid).then(res => {
-        userInfo.userName.push(res.username)
-        // state.userNameTable.push({userInfo:res})
-      })
-      console.log(userInfo.userName)
+const add = (index) => {
+  request.get('/event/'+state.tableData[index].id).then(res => {
+    let event = res
 
-
-      anime.push({
-        title: state.tableData[i].name,
-        date: state.tableData[i].date,
-        time: state.tableData[i].time,
-        location: state.tableData[i].location,
-        participants: state.tableData[i].participantid,
-        sport: state.tableData[i].sportid,
-        id: state.tableData[i].id,
-        description: state.tableData[i].description,
-        createdBy: userInfo.userName,
-      })
-      i++
+    if(event.participantid.length>0) {
+      event.participantid += ","
+      event.participantid += localStorage.getItem("userid")
+    }else{
+      event.participantid += localStorage.getItem("userid")
     }
-  }
-  return anime;
-})
-// const add = (index) => {
-//   request.get('/event/'+state.tableData[index].id).then(res => {
-//     let event = res
-//
-//     if(event.participantid.length>0) {
-//       event.participantid += ","
-//       event.participantid += localStorage.getItem("userid")
-//     }else{
-//       event.participantid += localStorage.getItem("userid")
-//     }
-//
-//     request.post('/event/update', event).then(res => {
-//       if (res.code === '200') {
-//         ElNotification({
-//           type: 'success',
-//           message: 'Join Success'
-//         })
-//         find()
-//       } else {
-//         ElNotification({
-//           type: 'error',
-//           message: res.msg
-//         })
-//       }
-//     })
-//   })
-// }
+
+    request.post('/event/update', event).then(res => {
+      if (res.code === '200') {
+        ElNotification({
+          type: 'success',
+          message: 'Join Success'
+        })
+        find()
+      } else {
+        ElNotification({
+          type: 'error',
+          message: res.msg
+        })
+      }
+    })
+  })
+}
 </script>
 
 <style scoped>
-.main-user-info {
-  background-color: rgb(217, 236, 255);
-  width: 515px;
-  margin: 2rem auto;
-  border-radius: 2rem;
-}
+
 </style>

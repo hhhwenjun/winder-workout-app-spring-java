@@ -12,40 +12,38 @@
                label="Experience">
       <el-option v-for="item in state.level_options" :label="item" :value="item"/>
     </el-select>
-    <el-button style="margin: 10px; width: 200px; float: right" type="primary" @click="match" round :disabled="buttonEnable">
+    <el-button style="margin: 10px" type="primary" @click="match" round :disabled="buttonEnable">
       <el-icon style="margin-right: 3px">
         <Search/>
       </el-icon>
       Match
     </el-button>
   </div>
-<!--  <el-table :data="state.tableData" stripe>-->
-<!--&lt;!&ndash;    <el-table-column prop="id" label="id"></el-table-column>&ndash;&gt;-->
-<!--    <el-table-column prop="username" label="username"></el-table-column>-->
-<!--    <el-table-column prop="sex" label="gender"></el-table-column>-->
-<!--    <el-table-column prop="age" label="age"></el-table-column>-->
-<!--    <el-table-column prop="bio" label="bio"></el-table-column>-->
 
-<!--    <el-table-column label="Operations">-->
-<!--      <template #default="scope">-->
-<!--        <el-button text @click="add(scope.$index)"-->
-<!--        >Like-->
-<!--        </el-button-->
-<!--        >-->
-<!--      </template>-->
-<!--    </el-table-column>-->
-<!--  </el-table>-->
-  <div class="main-user-info">
-    <PostPartner v-for="(anime, i) in anime_list" :key="i" :anime="anime"/>
-  </div>
+  <el-table :data="state.tableData" stripe>
+    <el-table-column prop="id" label="id"></el-table-column>
+    <el-table-column prop="username" label="username"></el-table-column>
+    <el-table-column prop="sex" label="gender"></el-table-column>
+    <el-table-column prop="age" label="age"></el-table-column>
+    <el-table-column prop="bio" label="bio"></el-table-column>
+
+    <el-table-column label="Operations">
+      <template #default="scope">
+        <el-button text @click="add(scope.$index)"
+        >Like
+        </el-button
+        >
+      </template>
+    </el-table-column>
+
+  </el-table>
 </template>
 
 <script setup>
 import {Search} from '@element-plus/icons-vue'
-import {computed, reactive, ref, watch, onMounted, onBeforeMount, onUnmounted} from "vue";
-import request from '../request';
+import {computed, reactive, ref} from "vue";
+import request from "../request";
 import {ElNotification} from "element-plus";
-import PostPartner from './PostPartner.vue';
 
 // set up the criteria for search
 const sex = ref(localStorage.getItem('findmate_sex')?localStorage.getItem('findmate_sex'):"")
@@ -66,6 +64,8 @@ request.get('/sport').then(res => {
   state.sport_options = res
 })
 
+
+
 const buttonEnable = computed(() =>{
   if(sex.value!=""||ageLower.value!=""||ageUpper.value!=""||sport.value!=""){
     return 0
@@ -73,37 +73,6 @@ const buttonEnable = computed(() =>{
   else {
     return 1
   }
-})
-
-const anime_list = computed(() =>{
-  let anime_imgSrc = [
-    "user1.jpg",
-    "user2.jpg",
-    "user3.jpg",
-    "user4.jpg",
-    "user5.jpg",
-    "user6.jpg",
-    "user7.jpg",
-    "WinderIcon.jpg",
-  ];
-  const anime = [];
-  if (state.tableData) {
-    let i = 0;
-    for(let obj in state.tableData) {
-      let img_i = Math.floor(Math.random() * i);
-      anime.push({
-        imgScr: anime_imgSrc[img_i],
-        title: state.tableData[i].username,
-        age: state.tableData[i].age,
-        gender: state.tableData[i].sex,
-        bio: state.tableData[i].bio,
-        sport: state.tableData[i].sportid,
-        id: state.tableData[i].id
-      })
-      i++
-    }
-  }
-  return anime;
 })
 
 const match = () => {
@@ -127,61 +96,37 @@ const match = () => {
       })
 }
 
-// const add = (index) => {
-//   request.get('/userrelation/relation/' + localStorage.getItem("userid")).then(res => {
-//     let userRelation = res
-//     console.log(index)
-//     if (userRelation.likeid == null) userRelation.likeid = ""
-//
-//     if (userRelation.likeid.length > 0) {
-//       userRelation.likeid += ","
-//       // userRelation.likeid += state.tableData[index].id
-//       userRelation.likeid += index
-//     } else {
-//       // userRelation.likeid += state.tableData[index].id
-//       userRelation.likeid += index
-//     }
-//
-//     request.post('/userrelation/update', userRelation).then(res => {
-//       if (res.code === '200') {
-//         ElNotification({
-//           type: 'success',
-//           message: 'Like Successful'
-//         })
-//         match()
-//       } else {
-//         ElNotification({
-//           type: 'error',
-//           message: res.msg
-//         })
-//       }
-//     })
-//   })
-// }
+const add = (index) => {
+  request.get('/userrelation/relation/' + localStorage.getItem("userid")).then(res => {
+    let userRelation = res
 
+    if (userRelation.likeid == null) userRelation.likeid = ""
 
-// const handleScroll = () => {
-//   if (
-//       window.scrollY + window.innerHeight >=
-//       document.body.scrollHeight - 50
-//   ) {
-//     const new_anime = this.getAnime();
-//     this.anime_list = [...this.anime_list, ...new_anime];
-//   }
-// }
-//
-// onMounted(()=>{
-//
-//   // window.addEventListener("scroll", this.handleScroll);
-// })
+    if (userRelation.likeid.length > 0) {
+      userRelation.likeid += ","
+      userRelation.likeid += state.tableData[index].id
+    } else {
+      userRelation.likeid += state.tableData[index].id
+    }
+
+    request.post('/userrelation/update', userRelation).then(res => {
+      if (res.code === '200') {
+        ElNotification({
+          type: 'success',
+          message: 'Like Successful'
+        })
+        match()
+      } else {
+        ElNotification({
+          type: 'error',
+          message: res.msg
+        })
+      }
+    })
+  })
+}
 </script>
 
-
 <style scoped>
-.main-user-info {
-  background-color: rgb(217, 236, 255);
-  width: 515px;
-  margin: 2rem auto;
-  border-radius: 2rem;
-}
+
 </style>
