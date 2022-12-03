@@ -14,6 +14,7 @@
           <el-menu-item index="/youlike">Your Like</el-menu-item>
           <el-menu-item index="/likeyou">Like You</el-menu-item>
           <el-menu-item index="/yourmate">Your mate</el-menu-item>
+        <el-menu-item index="/yourmate">Your mate</el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="3">
         <template #title>
