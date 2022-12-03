@@ -1,0 +1,121 @@
+{
+  "users": [
+    {
+      "userID": 1001,
+      "userTitle": "User1",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1002,
+      "userTitle": "User2",
+      "activities": {
+        "Hiking": "beginner"
+      }
+    },
+    {
+      "userID": 1003,
+      "userTitle": "User3",
+      "activities": {
+        "Running": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1004,
+      "userTitle": "User4",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1005,
+      "userTitle": "User5",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1006,
+      "userTitle": "User6",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1007,
+      "userTitle": "User7",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1008,
+      "userTitle": "User8",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1009,
+      "userTitle": "User9",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    },
+    {
+      "userID": 1010,
+      "userTitle": "User10",
+      "activities": {
+        "Tennis": "beginner", "Soccer": "intermediate"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "groupId": 2001,
+      "groupTitle": "Group 1",
+      "sport": "Hiking",
+      "time": "2022-12-20 08:00 (EST)",
+      "location": "Blacksburg, VA, 22030",
+      "size": 5,
+      "createdBy": "User 3"
+    },
+    {
+      "groupId": 2002,
+      "groupTitle": "Group 2",
+      "sport": "Hiking",
+      "time": "2022-12-20 08:00 (EST)",
+      "location": "Blacksburg, VA, 22030",
+      "size": 5,
+      "createdBy": "User 1"
+    },
+    {
+      "groupId": 2003,
+      "groupTitle": "Group 3",
+      "sport": "Hiking",
+      "time": "2022-12-20 08:00 (EST)",
+      "location": "Blacksburg, VA, 22030",
+      "size": 5,
+      "createdBy": "User 6"
+    },
+    {
+      "groupId": 2004,
+      "groupTitle": "Group 4",
+      "sport": "Hiking",
+      "time": "2022-12-20 08:00 (EST)",
+      "location": "Blacksburg, VA, 22030",
+      "size": 5,
+      "createdBy": "User 5"
+    },
+    {
+      "groupId": 2005,
+      "groupTitle": "Group 5",
+      "sport": "Hiking",
+      "time": "2022-12-20 08:00 (EST)",
+      "location": "Blacksburg, VA, 22030",
+      "size": 5,
+      "createdBy": "User 1"
+    }
+  ]
+}
