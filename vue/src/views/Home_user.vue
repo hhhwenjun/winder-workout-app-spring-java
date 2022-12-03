@@ -96,13 +96,15 @@ let state = reactive({
   sport_options: []
 })
 
-request.get('/user/userid/' + localStorage.getItem("userid")).then(res => {
-  state.user = reactive(res)
-})
+if (localStorage.getItem("userid")!=null){
+  request.get('/user/userid/' + localStorage.getItem("userid")).then(res => {
+    state.user = reactive(res)
+  })
 
-request.get('/experience/new-sport/' + localStorage.getItem("userid")).then(res => {
-  state.sport_options = res
-})
+  request.get('/experience/new-sport/' + localStorage.getItem("userid")).then(res => {
+    state.sport_options = res
+  })
+}
 
 request.get('/experience/user-experience/' + "4").then(res => {
   state.userTableData = res

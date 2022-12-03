@@ -5,13 +5,13 @@
       <p>Let Winder help you find workout partners and group activities. </p>
       <router-link
           :to="'/login'">
-        <button class="el-button el-button--primary join-us">Join Us!</button>
+        <button class="el-button el-button--primary join-us">Log in / Join Us!</button>
       </router-link>
     </section>
  </div>
 </template>
 
-<script></script>
+
 
 <style scoped>
 .home-page {

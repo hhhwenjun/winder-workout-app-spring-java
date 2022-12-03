@@ -97,12 +97,12 @@ p {
   flex-direction:column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #07564d;
+  background-color: rgba(59, 130, 215, 0.99);
   border: 2px solid #e6e6e6;
   border-radius: 2rem;
   padding: 1rem 2rem;
   box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.15);
-  color: #EF5B5B;
+  color: white;
   /*color: rgba(251, 206, 59, 1);*/
   margin-bottom: 20px;
   width: 450px;
