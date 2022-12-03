@@ -19,7 +19,7 @@ a,
 a:visited,
 a:hover,
 a:active{
-  color: black;
+  color: white;
 }
 
 body {

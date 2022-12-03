@@ -47,5 +47,9 @@ if(localStorage.getItem("username")==null){
   padding: 0;
 }
 
+.layout-container{
+  background-color: rgba(235, 235, 235, 1);
+}
+
 
 </style>

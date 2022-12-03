@@ -50,13 +50,11 @@ p{
 }
 
 button {
-  background-color: #409eff;
   width: 400px;
   height: 65px;
   border: 0;
   margin-top: 45px;
   cursor: pointer;
-  box-shadow: 0px 2px 2px 0px #409eff;
 }
 /*.button:hover {*/
 
@@ -64,7 +62,7 @@ button {
 /*}*/
 .join-us {
   display: inline-block;
-  color: #F5F5F5;
+  color: #ffffff;
   font-family: Monda;
   font-size: 48px;
   font-weight: bolder;

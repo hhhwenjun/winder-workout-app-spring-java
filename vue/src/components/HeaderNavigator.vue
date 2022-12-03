@@ -2,9 +2,9 @@
   <div class="navigator-login">
       <div class="navigator">
       <router-link class="nav-link" to="/" index = "/">Home</router-link> |
-      <router-link class="nav-link" to="/mywinder" index = "/mywinder">My Winder</router-link> |
-      <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner">Workout Partner</router-link> |
-      <router-link class="nav-link" to="/findevent" index = "/findgroupactivity">Group Activity</router-link>
+        <router-link class="nav-link" to="/mywinder" index = "/mywinder" @click="setLink('account')">My Winder</router-link> |
+        <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner" @click="setLink('partner')">Workout Partner</router-link> |
+        <router-link class="nav-link" to="/findevent" index = "/findgroupactivity" @click="setLink('event')">Group Activity</router-link>
       </div>
     </div>
   <div class="login">
@@ -16,8 +16,20 @@
 import Header from "./Header.vue";
 export default {
   name: "HeaderNavigator",
-  components: {Header}
+  components: {Header},
+  methods: {
+    setLink(link) {
+      localStorage.setItem('link', link)
+      console.log(localStorage.getItem("link"))
+      console.log(window.location.href)
+      // window.location.reload()
+
+
+    }
+  }
 }
+
+
 </script>
 
 <style scoped>

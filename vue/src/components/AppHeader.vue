@@ -36,7 +36,8 @@ export default {
 
 <style scoped>
 header {
-  background: rgba(251, 206, 59, 1);
+  color: white;
+  background: rgba(59, 130, 215, 0.99);
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

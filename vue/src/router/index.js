@@ -47,11 +47,6 @@ const routes = [
         component: () => import('../views/LikeYou.vue')
       },
       {
-        path: '/messagesent',
-        name: 'MessageSent',
-        component: () => import('../views/MessageSent.vue')
-      },
-      {
         path: '/findevent',
         name: 'Findevent',
         component: () => import('../views/FindEvent.vue')
@@ -75,16 +70,6 @@ const routes = [
         path: '/profile',
         name: 'Profile',
         component: () => import('../views/Profile.vue')
-      },
-      {
-        path: '/findworkoutpartner',
-        name: 'FindWorkoutPartner',
-        component: () => import('../views/FindWorkoutPartner.vue')
-      },
-      {
-        path: '/findgroupactivity',
-        name: 'FindGroupActivity',
-        component: () => import('../views/FindGroupActivity.vue')
       },
     ]
   },
