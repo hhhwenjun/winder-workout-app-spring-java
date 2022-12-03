@@ -98,7 +98,7 @@ p {
   flex-direction:row;
   justify-content: flex-start;
   align-items: flex-end;
-  background-color: #2c3e50;
+  background-color: rgba(59, 130, 215, 0.99);
   border: 2px solid #e6e6e6;
   border-radius: 2rem;
   padding: 1rem 2rem;
@@ -164,7 +164,7 @@ p {
 }
 
 .activeLike {
-  background: #2c3e50;
+  background: #07564d;
 }
 
 .disableLike {

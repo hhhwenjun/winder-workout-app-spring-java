@@ -55,6 +55,7 @@ const login = () => {
           request.get("/user/username/"+user.username).then(res => {
             localStorage.setItem('userid', res.id)
             localStorage.setItem('username', res.username)
+            localStorage.setItem('link', 'account')
             router.push('/mywinder')
             location.reload()
           })

@@ -14,7 +14,7 @@ const routes = [
       {
         path: '/mywinder',
         name: 'MyWinder',
-        component: () => import('../views/Home_wenjun.vue')
+        component: () => import('../views/Home_user.vue')
       },
       {
         path: '/profileedit',

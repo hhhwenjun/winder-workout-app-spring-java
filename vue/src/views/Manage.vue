@@ -29,7 +29,7 @@ const state = reactive({
 })
 
 if(localStorage.getItem("username")==null){
-  router.push('/login')
+  router.push('/')
 }
 </script>
 

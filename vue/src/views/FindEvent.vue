@@ -51,7 +51,7 @@
 <!--    </el-table-column>-->
 <!--  </el-table>-->
   <div class="main-user-info">
-    <PostGroup v-for="(anime, i) in anime_list" :key="i" :anime="anime"/>
+    <PostGroup v-for="(anime, i) in state.anime_list" :key="i" :anime="anime"/>
   </div>
 </template>
 
@@ -96,7 +96,7 @@ const buttonEnable = computed(() =>{
 
 const state = reactive({
   tableDate: [],
-  // userNameTable: []
+  anime_list:[]
 })
 
 
@@ -123,42 +123,27 @@ const find = () => {
   })
       .then(res => {
         state.tableData = res
-        // console.log(res)
+        if (state.tableData) {
+          for(let i = 0; i < state.tableData.length; i++) {
+            request.get('/user/userid/' + state.tableData[i].createrid).then(res => {
+              state.anime_list.push({
+                title: state.tableData[i].name,
+                date: state.tableData[i].date,
+                time: state.tableData[i].time,
+                location: state.tableData[i].location,
+                participants: state.tableData[i].participantid,
+                sport: state.tableData[i].sportid,
+                id: state.tableData[i].id,
+                description: state.tableData[i].description,
+                createdBy: res.username
+              })
+            })
+          }
+        }
       })
 }
 
-const anime_list = computed(() =>{
-  const anime = [];
-  if (state.tableData) {
-    let i = 0;
-    for(let obj in state.tableData) {
-      console.log(state.tableData[i].createrid)
-      let userInfo = reactive({
-        userName: []
-      })
-      request.get('/user/userid/' + state.tableData[i].createrid).then(res => {
-        userInfo.userName.push(res.username)
-        // state.userNameTable.push({userInfo:res})
-      })
-      console.log(userInfo.userName)
 
-
-      anime.push({
-        title: state.tableData[i].name,
-        date: state.tableData[i].date,
-        time: state.tableData[i].time,
-        location: state.tableData[i].location,
-        participants: state.tableData[i].participantid,
-        sport: state.tableData[i].sportid,
-        id: state.tableData[i].id,
-        description: state.tableData[i].description,
-        createdBy: userInfo.userName,
-      })
-      i++
-    }
-  }
-  return anime;
-})
 // const add = (index) => {
 //   request.get('/event/'+state.tableData[index].id).then(res => {
 //     let event = res
