@@ -1,10 +1,10 @@
 <template>
   <div class="navigator-login">
     <div class="navigator">
-      <router-link class="nav-link" to="/" index = "/" v-if="user == null">Home</router-link>
-      <router-link class="nav-link" to="/mywinder" index = "/mywinder" v-if="user != null" @click="setLink('account')">My Winder</router-link>
-      <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner" v-if="user != null" @click="setLink('partner')"> | Workout Partner</router-link>
-      <router-link class="nav-link" to="/findevent" index = "/findgroupactivity" v-if="user != null" @click="setLink('event')"> | Group Activity</router-link>
+      <p class="nav-link"  v-if="user == null">Home</p>
+      <p class="nav-link"  v-if="user != null" @click="setLink('account')">My Winder</p>
+      <p class="nav-link"  v-if="user != null" @click="setLink('partner')"> | Workout Partner</p>
+      <p class="nav-link"  v-if="user != null" @click="setLink('event')"> | Group Activity</p>
     </div>
   </div>
   <div class="login">
@@ -21,14 +21,15 @@ export default {
   components: {Header},
   methods: {
     setLink(link) {
-      localStorage.setItem('link', link)
-      if (localStorage.getItem('link')=="account"){
+
+      if (link=="account"){
+
         router.push("/login")
       }
-      else if (localStorage.getItem('link')=="partner"){
+      else if (link=="partner"){
         router.push("/findmate")
       }
-      else if (localStorage.getItem('link')=="event"){
+      else if (link=="event"){
         router.push("/findevent")
       }
     }

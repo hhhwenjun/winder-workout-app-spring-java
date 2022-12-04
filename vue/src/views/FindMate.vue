@@ -19,22 +19,22 @@
       Match
     </el-button>
   </div>
-<!--  <el-table :data="state.tableData" stripe>-->
-<!--&lt;!&ndash;    <el-table-column prop="id" label="id"></el-table-column>&ndash;&gt;-->
-<!--    <el-table-column prop="username" label="username"></el-table-column>-->
-<!--    <el-table-column prop="sex" label="gender"></el-table-column>-->
-<!--    <el-table-column prop="age" label="age"></el-table-column>-->
-<!--    <el-table-column prop="bio" label="bio"></el-table-column>-->
+  <!--  <el-table :data="state.tableData" stripe>-->
+  <!--&lt;!&ndash;    <el-table-column prop="id" label="id"></el-table-column>&ndash;&gt;-->
+  <!--    <el-table-column prop="username" label="username"></el-table-column>-->
+  <!--    <el-table-column prop="sex" label="gender"></el-table-column>-->
+  <!--    <el-table-column prop="age" label="age"></el-table-column>-->
+  <!--    <el-table-column prop="bio" label="bio"></el-table-column>-->
 
-<!--    <el-table-column label="Operations">-->
-<!--      <template #default="scope">-->
-<!--        <el-button text @click="add(scope.$index)"-->
-<!--        >Like-->
-<!--        </el-button-->
-<!--        >-->
-<!--      </template>-->
-<!--    </el-table-column>-->
-<!--  </el-table>-->
+  <!--    <el-table-column label="Operations">-->
+  <!--      <template #default="scope">-->
+  <!--        <el-button text @click="add(scope.$index)"-->
+  <!--        >Like-->
+  <!--        </el-button-->
+  <!--        >-->
+  <!--      </template>-->
+  <!--    </el-table-column>-->
+  <!--  </el-table>-->
   <div class="main-user-info">
     <PostPartner v-for="(anime, i) in anime_list" :key="i" :anime="anime"/>
   </div>
@@ -174,6 +174,11 @@ const match = () => {
 //
 //   // window.addEventListener("scroll", this.handleScroll);
 // })
+
+if (localStorage.getItem('link')!='partner'){
+  localStorage.setItem('link', 'partner')
+  location.reload()
+}
 </script>
 
 
