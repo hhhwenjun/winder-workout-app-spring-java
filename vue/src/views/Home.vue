@@ -6,6 +6,7 @@
           :to="'/login'">
         <button class="el-button el-button--primary join-us">Join Us</button>
       </router-link>
+      <p> Photo by Guduru Ajay bhargav on Pexels. </p>
     </section>
  </div>
 </template>
@@ -40,11 +41,13 @@ h1{
 }
 p{
   display: block;
-  padding: 0.25rem;
+  padding: 0.5rem;
   font-family: Leelawadee;
-  font-size: 25px;
+  color: white;
+  font-size: 20px;
   font-style: oblique;
-  margin-top: 40px;
+  text-align: right;
+  margin-top: 300px;
   /*border: solid 3px #1a1a1a;*/
 }
 
