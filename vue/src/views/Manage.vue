@@ -31,6 +31,7 @@ const state = reactive({
 if(localStorage.getItem("username")==null){
   router.push('/')
 }
+
 </script>
 
 <style scoped>

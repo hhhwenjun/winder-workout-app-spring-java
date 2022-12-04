@@ -1,11 +1,6 @@
 <template>
   <el-scrollbar>
     <el-menu :default-openeds="['2', '3', '4']" router>
-      <!--      <el-menu-item index="/" >-->
-      <!--        <template #title>-->
-      <!--          <el-icon><house /></el-icon>Home-->
-      <!--        </template>-->
-      <!--      </el-menu-item>-->
       <el-sub-menu index="2" v-if="link =='partner'">
         <template #title>
           <el-icon><message /></el-icon>Mate
@@ -42,11 +37,9 @@
 
 <script setup>
 import { Menu as IconMenu, Message, Setting, House } from '@element-plus/icons-vue'
-import {reactive, ref} from "vue";
-const link = ref(localStorage.getItem("link"))
+import {ref} from "vue";
+let link = ref(localStorage.getItem("link"))
 </script>
-
-
 
 
 <style>

@@ -1,7 +1,6 @@
 <template>
   <section class="all-boxes">
     <section class="user-info-panel">
-      <img :src="getImg(anime.imgScr)" :alt="anime.title" />
       <div class="user-info-panel-inf">
         <h2>
           {{ anime.title }}
@@ -15,11 +14,6 @@
       </div>
     </section>
     <section class="activity-info-panel">
-<!--      <div class="activity-info-panel-act" v-for="item in getUserActivity(anime.id, userJson)" :key="item.id">-->
-<!--        <div v-for="(value, index) in item" :key="index">-->
-<!--          <p>{{index}}: {{value}}</p>-->
-<!--        </div>-->
-<!--      </div>-->
       <div class="activity-info-panel-but">
         <button @click="add(anime)" :disabled="likeDisable" :class=
             "{activeLike: !likeDisable, disableLike: likeDisable}">
@@ -32,7 +26,6 @@
 
 <script setup>
 import {defineProps, defineEmits, computed, ref} from 'vue'
-import userJson from "./db.json";
 import request from "../request.js";
 import {ElNotification} from "element-plus";
 const props = defineProps({
@@ -86,7 +79,6 @@ const add = (anime) => {
   likeDisable.value = 1
 }
 
-
 </script>
 
 <style scoped>
@@ -103,8 +95,7 @@ p {
   border-radius: 2rem;
   padding: 1rem 2rem;
   box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.15);
-  color: #EF5B5B;
-  /*color: rgba(251, 206, 59, 1);*/
+  color: white;
   margin-bottom: 20px;
   width: 450px;
   text-align: left;
@@ -114,7 +105,6 @@ p {
   position: relative;
   width: 250px;
   align-items: start;
-  /*border: black 2px solid;*/
 }
 
 .user-info-panel img {
@@ -152,7 +142,7 @@ p {
   width: 100px;
   margin-top: 10px;
   margin-left: 85px;
-  color: crimson;
+  color: white;
   border-radius: 50%;
   text-align: center;
   border: none;
@@ -161,10 +151,12 @@ p {
 
 .activity-info-panel button:hover {
   background: whitesmoke;
+  color: crimson;
 }
 
 .activeLike {
-  background: #07564d;
+  background: #337ecc;
+
 }
 
 .disableLike {

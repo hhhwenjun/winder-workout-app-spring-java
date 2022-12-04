@@ -46,9 +46,8 @@ const user = ref(localStorage.getItem("userid"))
 
 <style scoped>
 .navigator-login {
-  font-size: 28px;
-  font-weight: bold;
-  font-family: Monda;
+  font-size: 24px;
+  font-family: Arial;
 }
 
 .navigator{
@@ -61,7 +60,8 @@ const user = ref(localStorage.getItem("userid"))
   text-decoration: none;
 }
 .nav-link:hover {
-  text-decoration: underline 2px black;
+  text-decoration: underline 2px whitesmoke;
+  cursor: pointer;
 }
 
 .login{

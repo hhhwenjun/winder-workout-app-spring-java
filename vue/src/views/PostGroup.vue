@@ -10,7 +10,6 @@
         <p>Description: {{anime.description}} </p>
       </div>
       <div class="sport-logo">
-<!--        <font-awesome-icon icon="fa-solid fa-person-hiking" size="7x"/>-->
         <img src="../assets/userPhotos/WinderIcon.jpg" alt="Winder">
       </div>
     </section>
@@ -149,7 +148,7 @@ p {
   width: 100px;
   margin-top: 10px;
   margin-left: 85px;
-  color: crimson;
+  color: white;
   border-radius: 50%;
   text-align: center;
   border: none;
@@ -158,10 +157,11 @@ p {
 
 .other-info-panel button:hover {
   background: whitesmoke;
+  color: crimson;
 }
 
 .activeLike {
-  background: #07564d;
+  background: #337ecc;
 }
 
 .disableLike {

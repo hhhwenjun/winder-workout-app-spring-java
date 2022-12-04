@@ -35,21 +35,6 @@
     </el-select>
     <el-button style="margin: 10px; width: 200px; float: right" type="primary" @click="find"  round :disabled="buttonEnable"><el-icon style="margin-right: 3px"><Search /></el-icon> Find</el-button>
   </div>
-
-  <!--  <el-table :data="state.tableData" stripe>-->
-  <!--    <el-table-column prop="id" label="id"></el-table-column>-->
-  <!--    <el-table-column prop="name" label="name"></el-table-column>-->
-  <!--    <el-table-column prop="date" label="date" :formatter="formatDate"></el-table-column>-->
-  <!--    <el-table-column prop="time" label="time"></el-table-column>-->
-
-  <!--    <el-table-column label="Operations">-->
-  <!--      <template #default="scope">-->
-  <!--        <el-button text @click="add(scope.$index)"-->
-  <!--        >Add</el-button-->
-  <!--        >-->
-  <!--      </template>-->
-  <!--    </el-table-column>-->
-  <!--  </el-table>-->
   <div class="main-user-info">
     <PostGroup v-for="(anime, i) in state.anime_list" :key="i" :anime="anime"/>
   </div>
@@ -146,34 +131,6 @@ const find = () => {
       })
 }
 
-
-// const add = (index) => {
-//   request.get('/event/'+state.tableData[index].id).then(res => {
-//     let event = res
-//
-//     if(event.participantid.length>0) {
-//       event.participantid += ","
-//       event.participantid += localStorage.getItem("userid")
-//     }else{
-//       event.participantid += localStorage.getItem("userid")
-//     }
-//
-//     request.post('/event/update', event).then(res => {
-//       if (res.code === '200') {
-//         ElNotification({
-//           type: 'success',
-//           message: 'Join Success'
-//         })
-//         find()
-//       } else {
-//         ElNotification({
-//           type: 'error',
-//           message: res.msg
-//         })
-//       }
-//     })
-//   })
-// }
 
 if (localStorage.getItem('link')!='event'){
   localStorage.setItem('link', 'event')
