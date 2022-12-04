@@ -77,14 +77,14 @@ const buttonEnable = computed(() =>{
 
 const anime_list = computed(() =>{
   let anime_imgSrc = [
-    "user1.jpg",
-    "user2.jpg",
-    "user3.jpg",
-    "user4.jpg",
-    "user5.jpg",
-    "user6.jpg",
-    "user7.jpg",
-    "WinderIcon.jpg",
+    "../../assets/userPhotos/user1.jpg",
+    "../../assets/userPhotos/user2.jpg",
+    "../../assets/userPhotos/user3.jpg",
+    "../../assets/userPhotos/user4.jpg",
+    "../../assets/userPhotos/user5.jpg",
+    "../../assets/userPhotos/user6.jpg",
+    "../../assets/userPhotos/user7.jpg",
+    "../../assets/userPhotos/WinderIcon.jpg",
   ];
   const anime = [];
   if (state.tableData) {
