@@ -15,7 +15,7 @@
       </el-form>
     </div>
     <div style="width: 450px; margin: 100px auto;">
-      <h1 style="margin-bottom: 30px">Or create an Winder account</h1>
+      <h1 style="margin-bottom: 30px">Or create a Winder account</h1>
       <el-button type="primary" style="width: 100%;" @click="register">Register now</el-button>
     </div>
   </div>
