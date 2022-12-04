@@ -1,10 +1,10 @@
 <template>
   <div class="navigator-login">
       <div class="navigator">
-      <router-link class="nav-link" to="/" index = "/" v-if="user == null">Home |</router-link>
-        <router-link class="nav-link" to="/mywinder" index = "/mywinder" @click="setLink('account')">My Winder</router-link> |
-        <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner" @click="setLink('partner')">Workout Partner</router-link> |
-        <router-link class="nav-link" to="/findevent" index = "/findgroupactivity" @click="setLink('event')">Group Activity</router-link>
+      <router-link class="nav-link" to="/" index = "/" v-if="user == null">Home</router-link>
+        <router-link class="nav-link" to="/mywinder" index = "/mywinder" v-if="user != null" @click="setLink('account')">My Winder</router-link>
+        <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner" v-if="user != null" @click="setLink('partner')"> | Workout Partner</router-link>
+        <router-link class="nav-link" to="/findevent" index = "/findgroupactivity" v-if="user != null" @click="setLink('event')"> | Group Activity</router-link>
       </div>
     </div>
   <div class="login">
