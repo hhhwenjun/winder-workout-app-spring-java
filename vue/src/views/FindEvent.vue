@@ -49,7 +49,7 @@ import {ElNotification} from "element-plus";
 import PostGroup from "./PostGroup.vue";
 
 const sportid = ref(localStorage.getItem('findevent_sportid')?parseInt(localStorage.getItem('findevent_sportid')):"")
-const date_from = ref(localStorage.getItem('findevent_sportid')?localStorage.getItem('findevent_sportid'):"")
+const date_from = ref(localStorage.getItem('findevent_date_from')?localStorage.getItem('findevent_date_from'):"")
 const date_to = ref(localStorage.getItem('findevent_date_to')?localStorage.getItem('findevent_date_to'):"")
 const time_from = ref(localStorage.getItem('findevent_time_from')?localStorage.getItem('findevent_time_from'):"")
 const time_to = ref(localStorage.getItem('findevent_time_to')?localStorage.getItem('findevent_time_to'):"")
