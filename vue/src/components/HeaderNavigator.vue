@@ -1,12 +1,12 @@
 <template>
   <div class="navigator-login">
-      <div class="navigator">
+    <div class="navigator">
       <router-link class="nav-link" to="/" index = "/" v-if="user == null">Home</router-link>
-        <router-link class="nav-link" to="/mywinder" index = "/mywinder" v-if="user != null" @click="setLink('account')">My Winder</router-link>
-        <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner" v-if="user != null" @click="setLink('partner')"> | Workout Partner</router-link>
-        <router-link class="nav-link" to="/findevent" index = "/findgroupactivity" v-if="user != null" @click="setLink('event')"> | Group Activity</router-link>
-      </div>
+      <router-link class="nav-link" to="/mywinder" index = "/mywinder" v-if="user != null" @click="setLink('account')">My Winder</router-link>
+      <router-link class="nav-link" to="/findmate" index = "/findworkoutpartner" v-if="user != null" @click="setLink('partner')"> | Workout Partner</router-link>
+      <router-link class="nav-link" to="/findevent" index = "/findgroupactivity" v-if="user != null" @click="setLink('event')"> | Group Activity</router-link>
     </div>
+  </div>
   <div class="login">
     <Header></Header>
   </div>
@@ -14,6 +14,7 @@
 
 <script>
 import Header from "./Header.vue";
+import router from "../router/index.js";
 
 export default {
   name: "HeaderNavigator",
@@ -21,11 +22,15 @@ export default {
   methods: {
     setLink(link) {
       localStorage.setItem('link', link)
-      console.log(localStorage.getItem("link"))
-      console.log(window.location.href)
-      // window.location.reload()
-
-
+      if (localStorage.getItem('link')=="account"){
+        router.push("/login")
+      }
+      else if (localStorage.getItem('link')=="partner"){
+        router.push("/findmate")
+      }
+      else if (localStorage.getItem('link')=="event"){
+        router.push("/findevent")
+      }
     }
   }
 }
