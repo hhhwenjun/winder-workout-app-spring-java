@@ -123,6 +123,9 @@ const find = () => {
   })
       .then(res => {
         state.tableData = res
+        for(let i = 0; i < state.tableData.length; i++){
+          state.anime_list.pop()
+        }
         if (state.tableData) {
           for(let i = 0; i < state.tableData.length; i++) {
             request.get('/user/userid/' + state.tableData[i].createrid).then(res => {
