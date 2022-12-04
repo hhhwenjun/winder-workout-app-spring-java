@@ -15,11 +15,11 @@
       </div>
     </section>
     <section class="activity-info-panel">
-<!--      <div class="activity-info-panel-act" v-for="item in getUserActivity(anime.id, userJson)" :key="item.id">-->
-<!--        <div v-for="(value, index) in item" :key="index">-->
-<!--          <p>{{index}}: {{value}}</p>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="activity-info-panel-act" v-for="item in getUserActivity(anime.id, userJson)" :key="item.id">-->
+      <!--        <div v-for="(value, index) in item" :key="index">-->
+      <!--          <p>{{index}}: {{value}}</p>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="activity-info-panel-but">
         <button @click="add(anime)" :disabled="likeDisable" :class=
             "{activeLike: !likeDisable, disableLike: likeDisable}">
