@@ -106,7 +106,7 @@ if (localStorage.getItem("userid")!=null){
   })
 }
 
-request.get('/experience/user-experience/' + "4").then(res => {
+request.get('/experience/user-experience/'+localStorage.getItem('userid')).then(res => {
   state.userTableData = res
 })
 
