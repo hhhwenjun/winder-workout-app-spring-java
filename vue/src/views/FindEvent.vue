@@ -48,13 +48,13 @@ import request from "../request";
 import {ElNotification} from "element-plus";
 import PostGroup from "./PostGroup.vue";
 
-const sportid = ref(localStorage.getItem('findevent_sportid')?parseInt(localStorage.getItem('findevent_sportid')):"")
-const date_from = ref(localStorage.getItem('findevent_date_from')?localStorage.getItem('findevent_date_from'):"")
-const date_to = ref(localStorage.getItem('findevent_date_to')?localStorage.getItem('findevent_date_to'):"")
-const time_from = ref(localStorage.getItem('findevent_time_from')?localStorage.getItem('findevent_time_from'):"")
-const time_to = ref(localStorage.getItem('findevent_time_to')?localStorage.getItem('findevent_time_to'):"")
-const capacity_from = ref(localStorage.getItem('findevent_capacity_from')?localStorage.getItem('findevent_capacity_from'):"")
-const capacity_to = ref(localStorage.getItem('findevent_capacity_to')?localStorage.getItem('findevent_capacity_to'):"")
+const sportid = ref("")
+const date_from = ref("")
+const date_to = ref("")
+const time_from = ref("")
+const time_to = ref("")
+const capacity_from = ref("")
+const capacity_to = ref("")
 const capacity_options = [2, 3, 5, 10, 20, 30, 50, 70, 100, 200, 500]
 
 request.get('/sport').then(res => {
@@ -87,13 +87,6 @@ const state = reactive({
 
 
 const find = () => {
-  localStorage.setItem('findevent_sportid', sportid.value)
-  localStorage.setItem('findevent_date_from', date_from.value)
-  localStorage.setItem('findevent_date_to', date_to.value)
-  localStorage.setItem('findevent_time_from', time_from.value)
-  localStorage.setItem('findevent_time_to', time_to.value)
-  localStorage.setItem('findevent_capacity_from', capacity_from.value)
-  localStorage.setItem('findevent_capacity_to', capacity_to.value)
   request.get("/event/find", {
     params: {
       userid: localStorage.getItem('userid'),
@@ -108,9 +101,7 @@ const find = () => {
   })
       .then(res => {
         state.tableData = res
-        for(let i = 0; i < state.tableData.length; i++){
-          state.anime_list.pop()
-        }
+        state.anime_list=[]
         if (state.tableData) {
           for(let i = 0; i < state.tableData.length; i++) {
             request.get('/user/userid/' + state.tableData[i].createrid).then(res => {
