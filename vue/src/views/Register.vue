@@ -11,7 +11,9 @@
         </el-form-item>
         <h2>Information</h2>
         <el-form-item prop="sex">
-          <el-input v-model="user.sex" placeholder="Sex" />
+          <el-select style="width: 200px; margin: 10px" v-model="user.sex" placeholder="Gender" clearable label="Gender">
+            <el-option v-for="item in state.gender_options" :label="item.label" :value="item.value"/>
+          </el-select>
         </el-form-item>
         <el-form-item prop="age">
           <el-input v-model="user.age" placeholder="Age"  />
@@ -48,6 +50,11 @@ const rules = reactive({
   password: [
     { required: true, message: 'Please enter password', trigger: 'blur' }
   ],
+
+})
+
+const state = reactive({
+  gender_options: [{value: 'female', label: 'Female'}, {value: 'male', label: 'Male'}],
 })
 
 const user = reactive({})
@@ -65,7 +72,7 @@ const register = () => {
           request.get("/user/username/"+user.username).then(res => {
             localStorage.setItem('userid', res.id)
             localStorage.setItem('username', res.username)
-            router.push('/')
+            router.push('/mywinder')
           })
         } else {
           ElNotification({
@@ -84,3 +91,8 @@ const register = () => {
 }
 </script>
 
+<style>
+.el-select{
+  transform: translate(-10px);
+}
+</style>

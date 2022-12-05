@@ -4,7 +4,9 @@
       <el-form :model="state.user" :rules="rules"  ref="ruleFormRef" size="large">
         <h2 style="text-align: center; margin-bottom: 30px">Information</h2>
         <el-form-item prop="gender">
-          <el-input v-model="state.user.sex" placeholder="Sex"/>
+          <el-select style="width: 200px; margin: 10px" v-model="state.user.sex" placeholder="Gender" clearable label="Gender">
+            <el-option v-for="item in state.gender_options" :label="item.label" :value="item.value"/>
+          </el-select>
         </el-form-item>
         <el-form-item prop="age">
           <el-input v-model="state.user.age" placeholder="Age"  />
@@ -39,7 +41,8 @@ import router from "../router";
 const { proxy } = getCurrentInstance()
 
 let state = reactive({
-  user:{}
+  user:{},
+  gender_options: [{value: 'female', label: 'Female'}, {value: 'male', label: 'Male'}],
 })
 
 request.get('/user/userid/'+localStorage.getItem("userid")).then(res => {
@@ -84,6 +87,8 @@ const profileedit = () => {
 
 </script>
 
-<style scoped>
-
+<style>
+.el-select{
+  transform: translate(-10px);
+}
 </style>
